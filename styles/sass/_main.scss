@@ -1,1 +1,117 @@
+body {
+  background-color: darkgrey;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Permanent Marker", sans-serif;
+}
 
+.wrapper {
+  background-color: #fff;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 95%;
+  height: 75vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 3px 3px dimgray;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 50px;
+  text-align: center;
+  padding: 20px;
+}
+
+h2,
+button {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 25px;
+}
+
+h2 {
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+.startPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.startButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.levelButton {
+  background-color: black;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border: none;
+  box-shadow: 1px 1px 1px 1px dimgray;
+  border-radius: 10px;
+  margin: 20px;
+  text-transform: uppercase;
+}
+
+.colourButton {
+  background-color: rgb(255, 0, 0);
+  width: calc((100% - 60px) / 4);
+  min-height: 200px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  margin: 10px;
+  outline: none;
+  box-shadow: 3px 3px 3px 3px dimgray;
+}
+
+#buttonWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 90%;
+  border: none;
+}
+
+#colourValue {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#answer {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#reset {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetButton,
+.playAgain {
+  padding: 15px 30px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  margin: 10px;
+  text-transform: uppercase;
+}
+
+.hidden {
+  display: none;
+}

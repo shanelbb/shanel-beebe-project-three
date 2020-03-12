@@ -1,5 +1,7 @@
-// GUESS THAT COLOUR GAME
-/* This program is a game that will allow a user to choose between 
+/* 
+GUESS THAT COLOUR GAME
+
+This program is a game that will allow a user to choose between 
 a set of coloured buttons to guess which colour corresponds with the
 displayed colour code. 
 
@@ -10,8 +12,31 @@ level the user wants to play (easy, medium, hard)
       if "medium" 
         display HSL colour mode;
       if "hard"  **** STRETCH GOAL *****
-        display HEX colour mode;  
-3. make a function that sets the color of each selection button.
+        display HEX colour mode;  */
+$(".easy").on("click", function() {
+  $(".startPage").addClass("hidden");
+  $(".gamePage").append(
+    `<h2 id="colourValue"></h2>
+      <div id="buttonWrapper">
+        <button class="colourButton"></button>
+        <button class="colourButton"></button>
+        <button class="colourButton"></button>
+        <button class="colourButton"></button>
+        <!-- <button class="colourButton"></button>
+          <button class="colourButton"></button> -->
+      </div>
+      <h2 id="answer"></h2>
+
+      <div id="reset">
+        <button class="playAgain">Play Again</button>
+        <button id="resetButton" class="resetButton">
+          Reset Game
+        </button>
+      </div>`
+  );
+});
+
+/* 3. make a function that sets the color of each selection button.
 4. make a function that sets the colour value randomly.
     - function 1 : generates RGB code *** MVP ***
     - function 2 : generates HSL code
@@ -32,4 +57,8 @@ button that let user reset the game to beginning difficulty choices
 4. Have final score display after 10 guesses 
  5. Have button to reset game to beginning
 
+************ ACCESSIBILITY CONSIDERATIONS ***********
+1. Create an accessiblity mode with only named colours
+have the colour names displayed on the buttons. users guess which one matches the rgb value. 
 
+*/

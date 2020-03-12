@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess That Colour!</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Permanent+Marker|Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <div class="wrapper">
+      <h1>Guess That Colour!</h1>
+      <section class="startPage">
+        <h2>Choose a level:</h2>
+        <div id="startButtons" class="startButtons">
+          <button id="easy" class="easy levelButton">Easy Mode</button>
+          <button id="medium" class="medium levelButton">Medium Mode</button>
+          <button id="hard" class="hard levelButton">Hard Mode</button>
+        </div>
+      </section>
+      <section class="gamePage" id="gamePage"></section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
