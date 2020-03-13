@@ -47,23 +47,42 @@ have the colour names displayed on the buttons. users guess which one matches th
 */
 
 $(function() {
-  const landingPage = function() {
-    $(".gamePage").hide();
-  };
-
-  const reset = () => {
-    $(".gamePage").hide();
-    $(".startPage").show();
-  };
-
+  // cached selectors
   const buttons = $(".colourButton");
   const background = $("body");
-  let colorValue = $("#colourValue");
+  const colorValue = $("#colourValue");
   const answerMessage = $("#answer");
+  const gamePage = $(".gamePage");
+  const startPage = $(".startPage");
 
+  // generates a random numer between 0 and 3 or number of button - 1.
   const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
 
+  // keeps gamePage hiddend until level button is clicked
+  const landingPage = function() {
+    gamePage.hide();
+  };
+
+  // resets background to original color
+  const resetBackGround = () => {
+    background.attr("style", "background-color: #adadad");
+  };
+
+  // resets answerMessage under color buttons to original message
+  const answerMessageReset = () => {
+    answerMessage.html("Choose carefully!");
+  };
+
+  // resets game to startPage
+  const reset = () => {
+    gamePage.hide();
+    startPage.show();
+    resetBackGround();
+  };
+
+  // sets the game up in rgb/easy mode
   const rgbMode = function() {
+    // a function to set the button color
     const setRGBButtonColour = function(button, red, green, blue) {
       $(button).attr(
         "style",
@@ -71,21 +90,25 @@ $(function() {
       );
     };
 
+    // a function to generate a random number between 0 and 255
     const makeRGBValue = () => {
-      return Math.ceil(Math.random() * 255);
+      return Math.floor(Math.random() * 256);
     };
 
+    // a loop to set each button to a random rgb value
     for (let i = 0; i < buttons.length; i++) {
       const red = makeRGBValue();
       const green = makeRGBValue();
       const blue = makeRGBValue();
       setRGBButtonColour(buttons[i], red, green, blue);
 
+      // if value of answerButton equals index of buttons (above) display the corresponding colour code in the h2 with the class of colorValue
       if (i === answerButton) {
         colorValue.html(`Colour Code: </br> 
       rgb(${red}, ${green}, ${blue})`);
       }
 
+      // function that displays "Correct" or "Wrong" based on user input. Also changes background to correct answer colour.
       $(buttons[i]).on("click", function() {
         if (this === buttons[answerButton]) {
           answerMessage.html("Correct!");
@@ -109,11 +132,11 @@ $(function() {
     };
 
     const makeHValue = () => {
-      return Math.ceil(Math.random() * 360);
+      return Math.floor(Math.random() * 361);
     };
 
     const makeSLValues = () => {
-      return Math.ceil(Math.random() * 100);
+      return Math.floor(Math.random() * 101);
     };
 
     for (let i = 0; i < buttons.length; i++) {
@@ -177,16 +200,19 @@ $(function() {
   };
 
   const startGame = () => {
+    answerMessageReset();
+
     $(".levelButton").on("click", function() {
-      $(".startPage").hide();
-      $(".gamePage").show();
+      startPage.hide();
+      gamePage.show();
     });
 
     $(".easy").on("click", function() {
       rgbMode();
       $(".playAgain").on("click", function() {
         rgbMode();
-        background.attr("style", "background-color: #adadad");
+        resetBackGround();
+        answerMessageReset();
       });
     });
 
@@ -194,7 +220,8 @@ $(function() {
       hslMode();
       $(".playAgain").on("click", function() {
         hslMode();
-        background.attr("style", "background-color: #adadad");
+        resetBackGround();
+        answerMessageReset();
       });
     });
 
@@ -202,14 +229,11 @@ $(function() {
       hexMode();
       $(".playAgain").on("click", function() {
         hexMode();
-        background.attr("style", "background-color: #adadad");
+        resetBackGround();
+        answerMessageReset();
       });
     });
 
-    for (let i = 0; i < buttons.length; i++) {
-      answerMessage.html("Choose carefully!");
-      background.attr("style", "background-color: #adadad");
-    }
     $(".resetButton").on("click", reset);
   };
 
