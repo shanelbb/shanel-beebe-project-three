@@ -47,10 +47,18 @@ have the colour names displayed on the buttons. users guess which one matches th
 */
 
 $(function() {
+  const landingPage = function() {
+    $(".gamePage").hide();
+  };
+
   const buttons = $(".colourButton");
+  const background = $("body");
 
   let colorValue;
   colorValue = $("#colourValue");
+
+  const answerMessage = $("#answer");
+  const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
 
   const rgbMode = function() {
     const setRGBButtonColour = function(button, red, green, blue) {
@@ -69,6 +77,23 @@ $(function() {
       const green = makeRGBValue();
       const blue = makeRGBValue();
       setRGBButtonColour(buttons[i], red, green, blue);
+
+      if (i === answerButton) {
+        colorValue.html(`Colour Code: </br> 
+      rgb(${red}, ${green}, ${blue})`);
+      }
+
+      $(buttons[i]).on("click", function() {
+        if (this === buttons[answerButton]) {
+          answerMessage.html("Correct!");
+          background.attr(
+            `style`,
+            `background-color: rgb(${red}, ${green}, ${blue})`
+          );
+        } else {
+          answerMessage.html("Wrong answer! Guess again.");
+        }
+      });
     }
   };
 
@@ -93,6 +118,23 @@ $(function() {
       const saturation = makeSLValues();
       const light = makeSLValues();
       setHSLButtonColour(buttons[i], hue, saturation, light);
+
+      if (i === answerButton) {
+        colorValue.html(`Colour Code: </br> 
+      hsl(${hue}, ${saturation}%, ${light}%)`);
+      }
+
+      $(buttons[i]).on("click", function() {
+        if (this === buttons[answerButton]) {
+          answerMessage.html("Correct!");
+          background.attr(
+            `style`,
+            `background-color: hsl(${hue}, ${saturation}%, ${light}%)`
+          );
+        } else {
+          answerMessage.html("Wrong answer! Guess again.");
+        }
+      });
     }
   };
 
@@ -114,15 +156,22 @@ $(function() {
     for (let i = 0; i < buttons.length; i++) {
       const hexVal = makeHexValue();
       setHexButtonColour(buttons[i], hexVal);
-      console.log(hexVal);
+
+      if (i === answerButton) {
+        colorValue.html(`Colour Code: </br> 
+      ${hexVal}`);
+      }
+
+      $(buttons[i]).on("click", function() {
+        if (this === buttons[answerButton]) {
+          answerMessage.html("Correct!");
+          background.attr(`style`, `background-color: ${hexVal}`);
+        } else {
+          answerMessage.html("Wrong answer! Guess again.");
+        }
+      });
     }
   };
-
-  const landingPage = function() {
-    $(".gamePage").hide();
-  };
-
-  const answerMessage = $("#answer");
 
   const startGame = () => {
     const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
@@ -145,8 +194,10 @@ $(function() {
       hexMode();
     });
 
-    answerMessage.html("Choose carefully!");
-    background.attr("style", "background-color: rgb(128, 128, 128)");
+    for (let i = 0; i < buttons.length; i++) {
+      answerMessage.html("Choose carefully!");
+      background.attr("style", "background-color: rgb(128, 128, 128)");
+    }
   };
 
   const init = function() {
