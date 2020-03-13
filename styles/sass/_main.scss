@@ -40,7 +40,8 @@ h2 {
   text-transform: uppercase;
 }
 
-.startPage {
+.startPage,
+.gamePage {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +80,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  width: 90%;
+  width: 90vw;
   border: none;
 }
 
@@ -97,7 +98,7 @@ h2 {
   margin: 0 auto;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }

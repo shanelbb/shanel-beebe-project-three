@@ -394,7 +394,8 @@ h2 {
   text-transform: uppercase;
 }
 
-.startPage {
+.startPage,
+.gamePage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -455,7 +456,7 @@ h2 {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin: 0 auto;
-  width: 90%;
+  width: 90vw;
   border: none;
 }
 
@@ -475,10 +476,10 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

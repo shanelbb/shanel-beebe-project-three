@@ -11,33 +11,6 @@ level the user wants to play (easy, medium, hard)
 2. Make function that brings up a start page when one of the level button is pressed.
 */
 
-const startGame = () => {
-  $(".levelButton").on("click", function() {
-    $(".startPage").hide();
-    $(".gamePage").append(
-      `<h2 id="colourValue"></h2>
-        <div id="buttonWrapper">
-          <button class="colourButton"></button>
-          <button class="colourButton"></button>
-          <button class="colourButton"></button>
-          <button class="colourButton"></button>
-          <!-- <button class="colourButton"></button>
-            <button class="colourButton"></button> -->
-        </div>
-        <h2 id="answer"></h2>
-  
-        <div id="reset">
-          <button class="playAgain">Play Again</button>
-          <button id="resetButton" class="resetButton">
-            Reset Game
-          </button>
-        </div>`
-    );
-  });
-};
-
-startGame();
-
 /* 3. If "easy" **** MVP *****
         display RGB colour mode;
       if "medium"
@@ -46,10 +19,7 @@ startGame();
       display HEX colour mode;  
 
  4. make a function that sets the color of each selection button.*/
-const buttons = $(".colourButton");
 
-let colourValue;
-colourValue = $("#colourValue");
 /*5. make a function that sets the colour value randomly.
     - function 1 : generates RGB code *** MVP ***
     - function 2 : generates HSL code
@@ -75,3 +45,114 @@ button that let user reset the game to beginning difficulty choices
 have the colour names displayed on the buttons. users guess which one matches the rgb value. 
 
 */
+
+$(function() {
+  const buttons = $(".colourButton");
+
+  let colorValue;
+  colorValue = $("#colourValue");
+
+  const rgbMode = function() {
+    const setRGBButtonColour = function(button, red, green, blue) {
+      $(button).attr(
+        "style",
+        "background-color: rgb(" + red + "," + green + "," + blue + ");"
+      );
+    };
+
+    const makeRGBValue = () => {
+      return Math.ceil(Math.random() * 255);
+    };
+
+    for (let i = 0; i < buttons.length; i++) {
+      const red = makeRGBValue();
+      const green = makeRGBValue();
+      const blue = makeRGBValue();
+      setRGBButtonColour(buttons[i], red, green, blue);
+    }
+  };
+
+  const hslMode = function() {
+    const setHSLButtonColour = function(button, h, s, l) {
+      $(button).attr(
+        "style",
+        "background-color: hsl(" + h + "," + s + "%," + l + "%);"
+      );
+    };
+
+    const makeHValue = () => {
+      return Math.ceil(Math.random() * 360);
+    };
+
+    const makeSLValues = () => {
+      return Math.ceil(Math.random() * 100);
+    };
+
+    for (let i = 0; i < buttons.length; i++) {
+      const hue = makeHValue();
+      const saturation = makeSLValues();
+      const light = makeSLValues();
+      setHSLButtonColour(buttons[i], hue, saturation, light);
+    }
+  };
+
+  const hexMode = function() {
+    const setHexButtonColour = function(button, hex) {
+      $(button).attr(`style`, `background-color: ${hex};`);
+    };
+
+    const makeHexValue = () => {
+      let hexCode = "#";
+      const hexValues = "0123456789abcdef";
+
+      while (hexCode.length < 7) {
+        hexCode += hexValues[Math.floor(Math.random() * hexValues.length)];
+      }
+      return hexCode;
+    };
+
+    for (let i = 0; i < buttons.length; i++) {
+      const hexVal = makeHexValue();
+      setHexButtonColour(buttons[i], hexVal);
+      console.log(hexVal);
+    }
+  };
+
+  const landingPage = function() {
+    $(".gamePage").hide();
+  };
+
+  const answerMessage = $("#answer");
+
+  const startGame = () => {
+    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+    const background = $("body");
+
+    $(".levelButton").on("click", function() {
+      $(".startPage").hide();
+      $(".gamePage").show();
+    });
+
+    $(".easy").on("click", function() {
+      rgbMode();
+    });
+
+    $(".medium").on("click", function() {
+      hslMode();
+    });
+
+    $(".hard").on("click", function() {
+      hexMode();
+    });
+
+    answerMessage.html("Choose carefully!");
+    background.attr("style", "background-color: rgb(128, 128, 128)");
+  };
+
+  const init = function() {
+    landingPage();
+    startGame();
+  };
+
+  init();
+});
