@@ -339,9 +339,7 @@ textarea {
 }
 
 body {
-  background-color: darkgrey;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #adadad;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -436,17 +434,16 @@ h2 {
 }
 
 .colourButton {
-  background-color: red;
   width: calc((100% - 60px) / 4);
   min-height: 200px;
   border: none;
   border-radius: 10px;
   -webkit-box-shadow: none;
           box-shadow: none;
-  margin: 10px;
+  margin: 15px;
   outline: none;
-  -webkit-box-shadow: 3px 3px 3px 3px dimgray;
-          box-shadow: 3px 3px 3px 3px dimgray;
+  -webkit-box-shadow: 2px 2px 2px 2px dimgray;
+          box-shadow: 2px 2px 2px 2px dimgray;
 }
 
 #buttonWrapper {
@@ -457,6 +454,7 @@ h2 {
       justify-content: space-around;
   margin: 0 auto;
   width: 90vw;
+  max-width: 1280px;
   border: none;
 }
 
@@ -496,6 +494,7 @@ h2 {
   border: none;
   margin: 10px;
   text-transform: uppercase;
+  border-radius: 10px;
 }
 
 .hidden {

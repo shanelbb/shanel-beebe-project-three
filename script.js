@@ -51,13 +51,16 @@ $(function() {
     $(".gamePage").hide();
   };
 
+  const reset = () => {
+    $(".gamePage").hide();
+    $(".startPage").show();
+  };
+
   const buttons = $(".colourButton");
   const background = $("body");
-
-  let colorValue;
-  colorValue = $("#colourValue");
-
+  let colorValue = $("#colourValue");
   const answerMessage = $("#answer");
+
   const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
 
   const rgbMode = function() {
@@ -174,9 +177,6 @@ $(function() {
   };
 
   const startGame = () => {
-    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
-    const background = $("body");
-
     $(".levelButton").on("click", function() {
       $(".startPage").hide();
       $(".gamePage").show();
@@ -184,20 +184,33 @@ $(function() {
 
     $(".easy").on("click", function() {
       rgbMode();
+      $(".playAgain").on("click", function() {
+        rgbMode();
+        background.attr("style", "background-color: #adadad");
+      });
     });
 
     $(".medium").on("click", function() {
       hslMode();
+      $(".playAgain").on("click", function() {
+        hslMode();
+        background.attr("style", "background-color: #adadad");
+      });
     });
 
     $(".hard").on("click", function() {
       hexMode();
+      $(".playAgain").on("click", function() {
+        hexMode();
+        background.attr("style", "background-color: #adadad");
+      });
     });
 
     for (let i = 0; i < buttons.length; i++) {
       answerMessage.html("Choose carefully!");
-      background.attr("style", "background-color: rgb(128, 128, 128)");
+      background.attr("style", "background-color: #adadad");
     }
+    $(".resetButton").on("click", reset);
   };
 
   const init = function() {
