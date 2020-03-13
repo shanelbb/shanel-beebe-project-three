@@ -56,7 +56,7 @@ $(function() {
   const startPage = $(".startPage");
 
   // generates a random numer between 0 and 3 or number of button - 1.
-  const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+  // const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
 
   // keeps gamePage hiddend until level button is clicked
   const landingPage = function() {
@@ -95,6 +95,8 @@ $(function() {
       return Math.floor(Math.random() * 256);
     };
 
+    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+
     // a loop to set each button to a random rgb value
     for (let i = 0; i < buttons.length; i++) {
       const red = makeRGBValue();
@@ -104,7 +106,7 @@ $(function() {
 
       // if value of answerButton equals index of buttons (above) display the corresponding colour code in the h2 with the class of colorValue
       if (i === answerButton) {
-        colorValue.html(`Colour Code: </br> 
+        colorValue.html(`Colour Code: </br>
       rgb(${red}, ${green}, ${blue})`);
       }
 
@@ -118,6 +120,7 @@ $(function() {
           );
         } else {
           answerMessage.html("Wrong answer! Guess again.");
+          resetBackGround();
         }
       });
     }
@@ -139,6 +142,8 @@ $(function() {
       return Math.floor(Math.random() * 101);
     };
 
+    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+
     for (let i = 0; i < buttons.length; i++) {
       const hue = makeHValue();
       const saturation = makeSLValues();
@@ -159,6 +164,7 @@ $(function() {
           );
         } else {
           answerMessage.html("Wrong answer! Guess again.");
+          resetBackGround();
         }
       });
     }
@@ -179,6 +185,8 @@ $(function() {
       return hexCode;
     };
 
+    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+
     for (let i = 0; i < buttons.length; i++) {
       const hexVal = makeHexValue();
       setHexButtonColour(buttons[i], hexVal);
@@ -194,6 +202,7 @@ $(function() {
           background.attr(`style`, `background-color: ${hexVal}`);
         } else {
           answerMessage.html("Wrong answer! Guess again.");
+          resetBackGround();
         }
       });
     }
