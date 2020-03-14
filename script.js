@@ -48,41 +48,39 @@ have the colour names displayed on the buttons. users guess which one matches th
 
 $(function() {
   // cached selectors
-  const buttons = $(".colourButton");
-  const background = $("body");
-  const colorValue = $("#colourValue");
-  const answerMessage = $("#answer");
-  const gamePage = $(".gamePage");
-  const startPage = $(".startPage");
-
-  // generates a random numer between 0 and 3 or number of button - 1.
-  // const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+  const $buttons = $(".colourButton");
+  const $background = $("body");
+  const $colorValue = $("#colourValue");
+  const $answerMessage = $("#answer");
+  const $gamePage = $(".gamePage");
+  const $startPage = $(".startPage");
 
   // keeps gamePage hiddend until level button is clicked
   const landingPage = function() {
-    gamePage.hide();
+    $gamePage.hide();
   };
 
   // resets background to original color
   const resetBackGround = () => {
-    background.attr("style", "background-color: #adadad");
+    $background.attr("style", "background-color: #adadad");
   };
 
-  // resets answerMessage under color buttons to original message
+  // resets answerMessage under color $buttons to original message
   const answerMessageReset = () => {
-    answerMessage.html("Choose carefully!");
+    $answerMessage.html("Choose carefully!");
   };
 
   // resets game to startPage
   const reset = () => {
-    gamePage.hide();
-    startPage.show();
+    $gamePage.hide();
+    $startPage.show();
     resetBackGround();
+    answerMessageReset();
   };
 
   // sets the game up in rgb/easy mode
   const rgbMode = function() {
-    // a function to set the button color
+    // a function to set the button color using an rgb value
     const setRGBButtonColour = function(button, red, green, blue) {
       $(button).attr(
         "style",
@@ -95,31 +93,33 @@ $(function() {
       return Math.floor(Math.random() * 256);
     };
 
-    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+    // generates a random numer between 0 and 3 or number of buttons - 1.
+    const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
     // a loop to set each button to a random rgb value
-    for (let i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < $buttons.length; i++) {
       const red = makeRGBValue();
       const green = makeRGBValue();
       const blue = makeRGBValue();
-      setRGBButtonColour(buttons[i], red, green, blue);
+      setRGBButtonColour($buttons[i], red, green, blue);
 
-      // if value of answerButton equals index of buttons (above) display the corresponding colour code in the h2 with the class of colorValue
+      // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
+
       if (i === answerButton) {
-        colorValue.html(`Colour Code: </br>
+        $colorValue.html(`Colour Code: </br>
       rgb(${red}, ${green}, ${blue})`);
       }
 
       // function that displays "Correct" or "Wrong" based on user input. Also changes background to correct answer colour.
-      $(buttons[i]).on("click", function() {
-        if (this === buttons[answerButton]) {
-          answerMessage.html("Correct!");
-          background.attr(
+      $($buttons[i]).on("click", function() {
+        if (this === $buttons[answerButton]) {
+          $answerMessage.html("Correct!");
+          $background.attr(
             `style`,
             `background-color: rgb(${red}, ${green}, ${blue})`
           );
         } else {
-          answerMessage.html("Wrong answer! Guess again.");
+          $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
         }
       });
@@ -127,6 +127,7 @@ $(function() {
   };
 
   const hslMode = function() {
+    // a function to set the button color using an hsl value
     const setHSLButtonColour = function(button, h, s, l) {
       $(button).attr(
         "style",
@@ -134,36 +135,42 @@ $(function() {
       );
     };
 
+    // a function to generate a random number between 0 and 360 for the hue value
     const makeHValue = () => {
       return Math.floor(Math.random() * 361);
     };
 
+    // a function to generate a random number between 0 and 100 for the saturation and lightness values
     const makeSLValues = () => {
       return Math.floor(Math.random() * 101);
     };
 
-    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+    // generates a random numer between 0 and 3 or number of buttons - 1.
+    const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
-    for (let i = 0; i < buttons.length; i++) {
+    // a loop to set each button to a random hsl value
+    for (let i = 0; i < $buttons.length; i++) {
       const hue = makeHValue();
       const saturation = makeSLValues();
       const light = makeSLValues();
-      setHSLButtonColour(buttons[i], hue, saturation, light);
+      setHSLButtonColour($buttons[i], hue, saturation, light);
+
+      // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
 
       if (i === answerButton) {
-        colorValue.html(`Colour Code: </br> 
+        $colorValue.html(`Colour Code: </br> 
       hsl(${hue}, ${saturation}%, ${light}%)`);
       }
 
-      $(buttons[i]).on("click", function() {
-        if (this === buttons[answerButton]) {
-          answerMessage.html("Correct!");
-          background.attr(
+      $($buttons[i]).on("click", function() {
+        if (this === $buttons[answerButton]) {
+          $answerMessage.html("Correct!");
+          $background.attr(
             `style`,
             `background-color: hsl(${hue}, ${saturation}%, ${light}%)`
           );
         } else {
-          answerMessage.html("Wrong answer! Guess again.");
+          $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
         }
       });
@@ -185,23 +192,24 @@ $(function() {
       return hexCode;
     };
 
-    const answerButton = Math.ceil(Math.random() * (buttons.length - 1));
+    // generates a random numer between 0 and 3 or number of button - 1.
+    const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
-    for (let i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < $buttons.length; i++) {
       const hexVal = makeHexValue();
-      setHexButtonColour(buttons[i], hexVal);
+      setHexButtonColour($buttons[i], hexVal);
 
       if (i === answerButton) {
-        colorValue.html(`Colour Code: </br> 
+        $colorValue.html(`Colour Code: </br> 
       ${hexVal}`);
       }
 
-      $(buttons[i]).on("click", function() {
-        if (this === buttons[answerButton]) {
-          answerMessage.html("Correct!");
-          background.attr(`style`, `background-color: ${hexVal}`);
+      $($buttons[i]).on("click", function() {
+        if (this === $buttons[answerButton]) {
+          $answerMessage.html("Correct!");
+          $background.attr(`style`, `background-color: ${hexVal}`);
         } else {
-          answerMessage.html("Wrong answer! Guess again.");
+          $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
         }
       });
@@ -212,8 +220,8 @@ $(function() {
     answerMessageReset();
 
     $(".levelButton").on("click", function() {
-      startPage.hide();
-      gamePage.show();
+      $startPage.hide();
+      $gamePage.show();
     });
 
     $(".easy").on("click", function() {
