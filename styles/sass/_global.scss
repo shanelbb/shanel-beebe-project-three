@@ -1,0 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-image: url(../assets/paintPattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #adadad;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Permanent Marker", sans-serif;
+}
+
+.wrapper {
+  background-color: #fff;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 95%;
+  height: 90vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px 2px dimgray;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 5rem;
+  text-align: center;
+  padding: 20px;
+}
+
+h2,
+button {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 2.5rem;
+}
+
+h2 {
+  padding: 20px;
+  text-transform: uppercase;
+}

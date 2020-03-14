@@ -1,43 +1,3 @@
-body {
-  background-color: #adadad;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  font-family: "Permanent Marker", sans-serif;
-}
-
-.wrapper {
-  background-color: #fff;
-  max-width: 1280px;
-  margin: 0 auto;
-  width: 95%;
-  height: 75vh;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 3px 3px 3px 3px dimgray;
-}
-
-h1 {
-  text-transform: uppercase;
-  font-size: 50px;
-  text-align: center;
-  padding: 20px;
-}
-
-h2,
-button {
-  font-family: "Ubuntu Mono", monospace;
-  font-size: 25px;
-}
-
-h2 {
-  padding: 20px;
-  text-transform: uppercase;
-}
-
 .startPage,
 .gamePage {
   display: flex;
@@ -65,14 +25,22 @@ h2 {
 }
 
 .colourButton {
-  width: calc((100% - 60px) / 4);
-  min-height: 200px;
+  // width: calc((100% - 60px) / 4);
+  // min-height: 200px;
+  width: 200px;
+  height: 200px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   box-shadow: none;
   margin: 15px;
   outline: none;
   box-shadow: 2px 2px 2px 2px dimgray;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 #buttonWrapper {
@@ -112,8 +80,4 @@ h2 {
   margin: 10px;
   text-transform: uppercase;
   border-radius: 10px;
-}
-
-.hidden {
-  display: none;
 }

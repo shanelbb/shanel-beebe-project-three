@@ -338,7 +338,14 @@ textarea {
   overflow: hidden;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
+  background-image: url(../assets/paintPattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #adadad;
   height: 100vh;
   display: -webkit-box;
@@ -355,7 +362,7 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   width: 95%;
-  height: 75vh;
+  height: 90vh;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -370,13 +377,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 3px 3px 3px 3px dimgray;
-          box-shadow: 3px 3px 3px 3px dimgray;
+  -webkit-box-shadow: 2px 2px 2px 2px dimgray;
+          box-shadow: 2px 2px 2px 2px dimgray;
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 5rem;
   text-align: center;
   padding: 20px;
 }
@@ -384,7 +391,7 @@ h1 {
 h2,
 button {
   font-family: "Ubuntu Mono", monospace;
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 h2 {
@@ -434,16 +441,23 @@ h2 {
 }
 
 .colourButton {
-  width: calc((100% - 60px) / 4);
-  min-height: 200px;
+  width: 200px;
+  height: 200px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   -webkit-box-shadow: none;
           box-shadow: none;
   margin: 15px;
   outline: none;
   -webkit-box-shadow: 2px 2px 2px 2px dimgray;
           box-shadow: 2px 2px 2px 2px dimgray;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.colourButton:hover, .colourButton:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #buttonWrapper {
@@ -497,6 +511,87 @@ h2 {
   border-radius: 10px;
 }
 
-.hidden {
-  display: none;
+@media (max-width: 1100px) {
+  .colourButton {
+    width: 150px;
+    height: 150px;
+  }
+  .resetButton,
+  .playAgain {
+    padding: 10px 20px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 850px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2,
+  button {
+    font-size: 2rem;
+  }
+  .levelButton {
+    width: 150px;
+    height: 40px;
+  }
+  .colourButton {
+    width: 125px;
+    height: 125px;
+  }
+}
+
+@media (max-width: 715px) {
+  .colourButton {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-height: 650px) {
+  body {
+    min-height: 125vh;
+  }
+  .wrapper {
+    height: 600px;
+  }
+}
+
+@media (max-width: 575px) {
+  #buttonWrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .colourButton {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 415px) {
+  h1 {
+    font-size: 3rem;
+  }
+  .colourButton {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 350px) {
+  .colourButton {
+    width: 100px;
+    height: 100px;
+  }
+  .resetButton,
+  .playAgain {
+    padding: 10px 20px;
+    font-size: 1.6rem;
+  }
 }
