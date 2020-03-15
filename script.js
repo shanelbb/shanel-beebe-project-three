@@ -9,7 +9,6 @@
 ************ ACCESSIBILITY CONSIDERATIONS ***********
 1. Create an accessiblity mode with only named colours
 have the colour names displayed on the buttons. users guess which one matches the rgb value. 
-
 */
 
 $(function() {
@@ -59,12 +58,6 @@ $(function() {
 
   const resetScore = () => {
     score = 0;
-    return score;
-  };
-
-  const incrementScore = num => {
-    score += num;
-    console.log("score", score);
     return score;
   };
 
@@ -133,11 +126,11 @@ $(function() {
         if (this === $buttons[answerButton]) {
           $answerMessage.html("Correct!");
           $background.css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
-          incrementScore(1);
+          score++;
+          console.log(score, this, $buttons[answerButton]);
         } else {
           $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
-          incrementScore(0);
         }
       });
     }
@@ -181,16 +174,16 @@ $(function() {
 
       $($buttons[i]).on("click", function() {
         if (this === $buttons[answerButton]) {
+          score++;
+          console.log(score);
           $answerMessage.html("Correct!");
           $background.css(
             `background-color`,
             `hsl(${hue}, ${saturation}%, ${light}%)`
           );
-          incrementScore(1);
         } else {
           $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
-          incrementScore(0);
         }
       });
     }
@@ -225,13 +218,13 @@ $(function() {
 
       $($buttons[i]).on("click", function() {
         if (this === $buttons[answerButton]) {
+          score++;
+          console.log(score);
           $answerMessage.html("Correct!");
           $background.css(`background-color`, `${hexVal}`);
-          incrementScore(1);
         } else {
           $answerMessage.html("Wrong answer! Guess again.");
           resetBackGround();
-          incrementScore(0);
         }
       });
     }
