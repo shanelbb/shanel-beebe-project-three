@@ -10,7 +10,6 @@ body {
   height: 100vh;
   display: flex;
   align-items: center;
-  font-family: "Permanent Marker", sans-serif;
 }
 
 .wrapper {
@@ -28,6 +27,7 @@ body {
 }
 
 h1 {
+  font-family: "Permanent Marker", sans-serif;
   text-transform: uppercase;
   font-size: 5rem;
   text-align: center;
@@ -38,9 +38,11 @@ h2,
 button {
   font-family: "Ubuntu Mono", monospace;
   font-size: 2.5rem;
+  text-align: center;
 }
 
 h2 {
   padding: 20px;
   text-transform: uppercase;
+  line-height: 3rem;
 }

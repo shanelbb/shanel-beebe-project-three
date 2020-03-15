@@ -354,7 +354,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Permanent Marker", sans-serif;
 }
 
 .wrapper {
@@ -382,6 +381,7 @@ body {
 }
 
 h1 {
+  font-family: "Permanent Marker", sans-serif;
   text-transform: uppercase;
   font-size: 5rem;
   text-align: center;
@@ -392,15 +392,18 @@ h2,
 button {
   font-family: "Ubuntu Mono", monospace;
   font-size: 2.5rem;
+  text-align: center;
 }
 
 h2 {
   padding: 20px;
   text-transform: uppercase;
+  line-height: 3rem;
 }
 
 .startPage,
-.gamePage {
+.gamePage,
+.finalScore {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -474,7 +477,6 @@ h2 {
 
 #colourValue {
   margin: 0 auto;
-  text-align: center;
 }
 
 #answer {
@@ -501,7 +503,8 @@ h2 {
 }
 
 .resetButton,
-.playAgain {
+.nextQuestion,
+.restart {
   padding: 15px 30px;
   background-color: #000;
   color: #fff;
@@ -517,7 +520,7 @@ h2 {
     height: 150px;
   }
   .resetButton,
-  .playAgain {
+  .nextQuestion {
     padding: 10px 20px;
     font-size: 2rem;
   }
@@ -590,7 +593,7 @@ h2 {
     height: 100px;
   }
   .resetButton,
-  .playAgain {
+  .nextQuestion {
     padding: 10px 20px;
     font-size: 1.6rem;
   }
