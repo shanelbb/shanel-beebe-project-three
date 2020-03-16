@@ -680,16 +680,13 @@ button {
 
 @media (max-height: 650px) {
   body {
-    min-height: 125vh;
-  }
-  .wrapper {
-    height: 600px;
+    min-height: 120vh;
   }
 }
 
 @media (max-width: 620px) {
   .wrapper {
-    height: 90vh;
+    height: auto;
   }
   h1 {
     font-size: 3.5rem;
