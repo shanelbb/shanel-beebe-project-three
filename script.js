@@ -1,9 +1,3 @@
-/*
-************ ACCESSIBILITY CONSIDERATIONS ***********
-1. Create an accessiblity mode with only named colours
-have the colour names displayed on the buttons. users guess which one matches the rgb value. 
-*/
-
 const app = {};
 
 // cached selectors
@@ -48,6 +42,7 @@ app.reset = () => {
   resetCounter();
 };
 
+// starts score at 0
 let score = 0;
 
 const resetScore = () => {
@@ -55,6 +50,7 @@ const resetScore = () => {
   return score;
 };
 
+// Sets max number of questions played per round
 const maxQuestions = 10;
 let questionCounter = 0;
 
@@ -65,6 +61,7 @@ const setNextQ = () => {
   endGame();
 };
 
+// Function called after user answers 10 questions; displays final score screen
 const endGame = () => {
   if (questionCounter === maxQuestions) {
     $gamePage.hide();
@@ -74,6 +71,7 @@ const endGame = () => {
   }
 };
 
+// resets questionCounter to 0
 const resetCounter = () => {
   questionCounter = 0;
   return questionCounter;
@@ -102,32 +100,30 @@ const rgbMode = function() {
     setRGBButtonColour($buttons[i], red, green, blue);
 
     // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
-
     if (i === answerButton) {
-      $colorValue.html(`Colour Code: </br>
+      $colorValue.html(`Guess which colour matches this colour code: </br>
    rgb(${red}, ${green}, ${blue})`);
     }
 
-    // event handler that displays "Correct" or "Wrong" based on user input. Also changes background to correct answer colour.
+    // event handler that displays "Correct" or "Wrong" based on user input.
     $($buttons[i])
-      .off()
+      .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
           score++;
-          console.log(score);
           $answerMessage.html("Correct!");
-          $background.css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
-          $buttons.css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
+          $background.css(`background-color`, `rgb(${red}, ${green}, ${blue})`); // changes bg colour to correct colour
+          $buttons.css(`background-color`, `rgb(${red}, ${green}, ${blue})`); //changes all colour buttons to the correct colour
         } else {
           $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`);
+          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
           resetBackGround();
-          console.log(score);
         }
       });
   }
 };
 
+// sets the game up in hsl/medium mode
 const hslMode = function() {
   // a function to set the button color using an hsl value
   const setHSLButtonColour = function(button, h, s, l) {
@@ -155,40 +151,43 @@ const hslMode = function() {
     setHSLButtonColour($buttons[i], hue, saturation, light);
 
     // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
-
     if (i === answerButton) {
-      $colorValue.html(`Colour Code: </br> 
+      $colorValue.html(`Guess which colour matches this colour code: </br> 
    hsl(${hue}, ${saturation}%, ${light}%)`);
     }
 
+    // event handler that displays "Correct" or "Wrong" based on user input.
     $($buttons[i])
-      .off()
+      .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
           score++;
           $answerMessage.html("Correct!");
           $background.css(
             `background-color`,
-            `hsl(${hue}, ${saturation}%, ${light}%)`
+            `hsl(${hue}, ${saturation}%, ${light}%)` // changes bg colour to correct colour
           );
           $buttons.css(
             `background-color`,
-            `hsl(${hue}, ${saturation}%, ${light}%)`
+            `hsl(${hue}, ${saturation}%, ${light}%)` //changes all colour buttons to the correct colour
           );
         } else {
           $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`);
+          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
           resetBackGround();
         }
       });
   }
 };
 
+// sets the game up in hex/hard mode
 const hexMode = function() {
+  // a function to set the button color using a hex value
   const setHexButtonColour = function(button, hex) {
     $(button).css(`background-color`, `${hex}`);
   };
 
+  // a function to generate a random hex value by iterating over a string
   const makeHexValue = () => {
     let hexCode = "#";
     const hexValues = "0123456789abcdef";
@@ -202,40 +201,46 @@ const hexMode = function() {
   // generates a random numer between 0 and 3 or number of button - 1.
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
+  // a loop to set each button to a random hex value
   for (let i = 0; i < $buttons.length; i++) {
     const hexVal = makeHexValue();
     setHexButtonColour($buttons[i], hexVal);
 
+    // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
-      $colorValue.html(`Colour Code: </br> 
+      $colorValue.html(`Guess which colour matches this colour code: </br> Hex
    ${hexVal}`);
     }
 
+    // event handler that displays "Correct" or "Wrong" based on user input.
     $($buttons[i])
-      .off()
+      .off() //.off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
           score++;
           $answerMessage.html("Correct!");
-          $background.css(`background-color`, `${hexVal}`);
-          $buttons.css(`background-color`, `${hexVal}`);
+          $background.css(`background-color`, `${hexVal}`); // changes bg colour to correct colour
+          $buttons.css(`background-color`, `${hexVal}`); //changes all colour buttons to the correct colour
         } else {
           $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`);
+          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
           resetBackGround();
         }
       });
   }
 };
 
+// function to start game when a level button is clicked
 app.startGame = () => {
   answerMessageReset();
 
+  // hides the landing page and reveals the game page
   $(".levelButton").on("click", function() {
     $startPage.hide();
     $gamePage.show();
   });
 
+  // takes users to easy/rgb mode of the game when easy button is clicked
   $(".easy").on("click", function() {
     rgbMode();
     $next.off("click").on("click", function() {
@@ -244,6 +249,7 @@ app.startGame = () => {
     });
   });
 
+  // takes users to medium/hsl mode of the game when medium button is clicked
   $(".medium").on("click", function() {
     hslMode();
     $next.off("click").on("click", function() {
@@ -252,6 +258,7 @@ app.startGame = () => {
     });
   });
 
+  // takes users to hard/hex mode of the game when hard button is clicked
   $(".hard").on("click", function() {
     hexMode();
     $next.off("click").on("click", function() {
@@ -260,6 +267,7 @@ app.startGame = () => {
     });
   });
 
+  // resets game to landing page when restart or start over buttons are clicked
   $(".resetButton")
     .off("click")
     .on("click", app.reset);
@@ -271,11 +279,13 @@ app.startGame = () => {
     });
 };
 
+// game initilization function
 app.init = function() {
   app.landingPage();
   app.startGame();
 };
 
+// document ready function
 $(function() {
   app.init();
 });
