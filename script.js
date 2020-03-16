@@ -230,6 +230,35 @@ const hexMode = function() {
   }
 };
 
+// ********* INFO MODAL FUNCTIONALITY ***********
+app.modal = () => {
+  // Get the modal
+  const $modal = $(".infoModal");
+
+  // Get the button that opens the modal
+  const $infoBtn = $("#infoBtn");
+
+  // Get the <span> element that closes the modal
+  const $span = $(".close");
+
+  // When the user clicks on the button, open the modal
+  $infoBtn.on("click", function() {
+    $modal.css("display", "block");
+  });
+
+  // When the user clicks on <span> (x), close the modal
+  $span.click(function() {
+    $modal.css("display", "none");
+  });
+
+  // When the user clicks anywhere outside of the modal, close it
+  $(window).click(function(event) {
+    if ($(event.target).is($modal)) {
+      $modal.css("display", "none");
+    }
+  });
+};
+
 // function to start game when a level button is clicked
 app.startGame = () => {
   answerMessageReset();
@@ -283,6 +312,7 @@ app.startGame = () => {
 app.init = function() {
   app.landingPage();
   app.startGame();
+  app.modal();
 };
 
 // document ready function

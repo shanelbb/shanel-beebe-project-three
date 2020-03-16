@@ -29,12 +29,6 @@
     width: 150px;
     height: 150px;
   }
-
-  .resetButton,
-  .nextQuestion {
-    padding: 10px 20px;
-    font-size: 2rem;
-  }
 }
 
 @media (max-width: 850px) {
@@ -55,12 +49,22 @@
     width: 125px;
     height: 125px;
   }
+
+  .restart {
+    padding: 10px 20px;
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 750px) {
   .colourButton {
     width: 100px;
     height: 100px;
+  }
+
+  .modalText {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
   }
 }
 
@@ -115,7 +119,8 @@
   }
 
   .resetButton,
-  .nextQuestion {
+  .nextQuestion,
+  #infoBtn {
     padding: 10px 20px;
     font-size: 1.6rem;
   }
