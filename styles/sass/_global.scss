@@ -16,8 +16,8 @@ body {
   background-color: #fff;
   max-width: 1280px;
   margin: 0 auto;
-  width: 95%;
-  height: 90vh;
+  width: 80%;
+  height: 80vh;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -34,6 +34,12 @@ h1 {
   padding: 20px;
 }
 
+h2 {
+  padding: 20px;
+  text-transform: uppercase;
+  line-height: 3rem;
+}
+
 h2,
 button {
   font-family: "Ubuntu Mono", monospace;
@@ -41,12 +47,10 @@ button {
   text-align: center;
 }
 
-h2 {
-  padding: 20px;
-  text-transform: uppercase;
-  line-height: 3rem;
-}
+button {
+  box-shadow: 1px 1px 1px 1px dimgray;
 
-.hidden {
-  visibility: hidden;
+  &:focus {
+    border: 2px solid tomato;
+  }
 }

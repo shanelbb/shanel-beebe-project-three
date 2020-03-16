@@ -1,11 +1,4 @@
 /*
-**************** STRETCH GOALS *********************
-1. Make a score counter function
-2. Make a function that causes the correct answer to be revealed when user guesses the wrong choice. 
-3. Add a button that lets user move on to next set of colours. 
-4. Have final score display after 10 guesses 
- 5. Have button to reset game to beginning
-
 ************ ACCESSIBILITY CONSIDERATIONS ***********
 1. Create an accessiblity mode with only named colours
 have the colour names displayed on the buttons. users guess which one matches the rgb value. 
@@ -65,10 +58,10 @@ const resetScore = () => {
 const maxQuestions = 10;
 let questionCounter = 0;
 
+// Move user to next question. Called when "next color" button is clicked
 const setNextQ = () => {
   resetPlay();
   questionCounter++;
-  console.log("QC:", questionCounter);
   endGame();
 };
 
@@ -90,10 +83,7 @@ const resetCounter = () => {
 const rgbMode = function() {
   // a function to set the button color using an rgb value
   const setRGBButtonColour = function(button, red, green, blue) {
-    $(button).attr(
-      "style",
-      "background-color: rgb(" + red + "," + green + "," + blue + ");"
-    );
+    $(button).css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
   };
 
   // a function to generate a random number between 0 and 255
@@ -123,16 +113,15 @@ const rgbMode = function() {
       .off()
       .one("click", function() {
         if (this === $buttons[answerButton]) {
+          score++;
+          console.log(score);
           $answerMessage.html("Correct!");
           $background.css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
           $buttons.css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
-          score++;
-          console.log("score:", score);
         } else {
           $answerMessage.html("Wrong answer!");
           $buttons.css(`background-color`, `#adadad`);
           resetBackGround();
-
           console.log(score);
         }
       });
@@ -142,10 +131,7 @@ const rgbMode = function() {
 const hslMode = function() {
   // a function to set the button color using an hsl value
   const setHSLButtonColour = function(button, h, s, l) {
-    $(button).attr(
-      "style",
-      "background-color: hsl(" + h + "," + s + "%," + l + "%);"
-    );
+    $(button).css(`background-color`, `hsl(${h}, ${s}%, ${l}%)`);
   };
 
   // a function to generate a random number between 0 and 360 for the hue value
@@ -180,7 +166,6 @@ const hslMode = function() {
       .one("click", function() {
         if (this === $buttons[answerButton]) {
           score++;
-          console.log(score);
           $answerMessage.html("Correct!");
           $background.css(
             `background-color`,
@@ -194,7 +179,6 @@ const hslMode = function() {
           $answerMessage.html("Wrong answer!");
           $buttons.css(`background-color`, `#adadad`);
           resetBackGround();
-          console.log(score);
         }
       });
   }
@@ -202,7 +186,7 @@ const hslMode = function() {
 
 const hexMode = function() {
   const setHexButtonColour = function(button, hex) {
-    $(button).attr(`style`, `background-color: ${hex};`);
+    $(button).css(`background-color`, `${hex}`);
   };
 
   const makeHexValue = () => {
@@ -232,7 +216,6 @@ const hexMode = function() {
       .one("click", function() {
         if (this === $buttons[answerButton]) {
           score++;
-          console.log(score);
           $answerMessage.html("Correct!");
           $background.css(`background-color`, `${hexVal}`);
           $buttons.css(`background-color`, `${hexVal}`);
@@ -240,7 +223,6 @@ const hexMode = function() {
           $answerMessage.html("Wrong answer!");
           $buttons.css(`background-color`, `#adadad`);
           resetBackGround();
-          console.log(score);
         }
       });
   }

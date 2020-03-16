@@ -360,8 +360,8 @@ body {
   background-color: #fff;
   max-width: 1280px;
   margin: 0 auto;
-  width: 95%;
-  height: 90vh;
+  width: 80%;
+  height: 80vh;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -388,6 +388,12 @@ h1 {
   padding: 20px;
 }
 
+h2 {
+  padding: 20px;
+  text-transform: uppercase;
+  line-height: 3rem;
+}
+
 h2,
 button {
   font-family: "Ubuntu Mono", monospace;
@@ -395,14 +401,13 @@ button {
   text-align: center;
 }
 
-h2 {
-  padding: 20px;
-  text-transform: uppercase;
-  line-height: 3rem;
+button {
+  -webkit-box-shadow: 1px 1px 1px 1px dimgray;
+          box-shadow: 1px 1px 1px 1px dimgray;
 }
 
-.hidden {
-  visibility: hidden;
+button:focus {
+  border: 2px solid tomato;
 }
 
 .startPage,
@@ -474,7 +479,7 @@ h2 {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin: 0 auto;
-  width: 90vw;
+  width: 80vw;
   max-width: 1280px;
   border: none;
 }
@@ -518,6 +523,29 @@ h2 {
   border-radius: 10px;
 }
 
+@media (min-width: 1800px) {
+  .wrapper {
+    max-width: 1600px;
+    height: 60vh;
+  }
+  h1 {
+    font-size: 6rem;
+    padding: 40px;
+  }
+  h2 {
+    padding: 40px;
+    line-height: 3.5rem;
+  }
+  h2,
+  button {
+    font-size: 3rem;
+  }
+  .colourButton {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 @media (max-width: 1100px) {
   .colourButton {
     width: 150px;
@@ -548,7 +576,7 @@ h2 {
   }
 }
 
-@media (max-width: 715px) {
+@media (max-width: 750px) {
   .colourButton {
     width: 100px;
     height: 100px;
@@ -564,7 +592,18 @@ h2 {
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 620px) {
+  .wrapper {
+    height: 90vh;
+  }
+  h1 {
+    font-size: 3.5rem;
+    padding: 10px;
+  }
+  h2 {
+    padding: 10px;
+    line-height: 2.5rem;
+  }
   #buttonWrapper {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -581,7 +620,7 @@ h2 {
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 450px) {
   h1 {
     font-size: 3rem;
   }
@@ -591,7 +630,7 @@ h2 {
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .colourButton {
     width: 100px;
     height: 100px;
@@ -600,5 +639,18 @@ h2 {
   .nextQuestion {
     padding: 10px 20px;
     font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  .colourButton {
+    width: 90px;
+    height: 90px;
   }
 }
