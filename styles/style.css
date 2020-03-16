@@ -401,6 +401,10 @@ h2 {
   line-height: 3rem;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .startPage,
 .gamePage,
 .finalScore {
