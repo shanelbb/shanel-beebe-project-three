@@ -11,7 +11,7 @@ const $next = $(".nextQuestion");
 const $final = $(".finalScore");
 const $score = $(".finalScoreMessage");
 
-// keeps gamePage hiddend until level button is clicked
+// **** APP STARTING PAGE ****
 app.landingPage = function() {
   $gamePage.hide();
   $final.hide();
@@ -33,15 +33,6 @@ const resetPlay = () => {
   answerMessageReset();
 };
 
-// resets game to startPage
-app.reset = () => {
-  app.landingPage();
-  $startPage.show();
-  resetPlay();
-  resetScore();
-  resetCounter();
-};
-
 // starts score at 0
 let score = 0;
 
@@ -61,6 +52,23 @@ const setNextQ = () => {
   endGame();
 };
 
+// Function called when the correct answer is selected in each mode
+const correctAnswer = function(colorValue) {
+  score++;
+  $answerMessage.html("Correct!");
+  $background.css(`background-color`, colorValue); // changes bg colour to correct colour
+  $buttons.css(`background-color`, colorValue); //changes all colour buttons to the correct colour
+  $buttons.off("click");
+};
+
+// Wrong answer function
+const wrongAnswer = () => {
+  $answerMessage.html("Wrong answer!");
+  $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
+  resetBackGround();
+  $buttons.off("click");
+};
+
 // Function called after user answers 10 questions; displays final score screen
 const endGame = () => {
   if (questionCounter === maxQuestions) {
@@ -77,7 +85,16 @@ const resetCounter = () => {
   return questionCounter;
 };
 
-// sets the game up in rgb/easy mode
+// **** RESETS GAME TO START PAGE *****
+app.reset = () => {
+  app.landingPage();
+  $startPage.show();
+  resetPlay();
+  resetScore();
+  resetCounter();
+};
+
+//  ****** SETS UP GAME IN RGB/EASY MODE *******
 const rgbMode = function() {
   // a function to set the button color using an rgb value
   const setRGBButtonColour = function(button, red, green, blue) {
@@ -110,20 +127,15 @@ const rgbMode = function() {
       .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
-          score++;
-          $answerMessage.html("Correct!");
-          $background.css(`background-color`, `rgb(${red}, ${green}, ${blue})`); // changes bg colour to correct colour
-          $buttons.css(`background-color`, `rgb(${red}, ${green}, ${blue})`); //changes all colour buttons to the correct colour
+          correctAnswer(`rgb(${red}, ${green}, ${blue})`);
         } else {
-          $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
-          resetBackGround();
+          wrongAnswer();
         }
       });
   }
 };
 
-// sets the game up in hsl/medium mode
+//  ****** SETS UP GAME IN HSL/MEDIUM MODE *******
 const hslMode = function() {
   // a function to set the button color using an hsl value
   const setHSLButtonColour = function(button, h, s, l) {
@@ -161,26 +173,15 @@ const hslMode = function() {
       .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
-          score++;
-          $answerMessage.html("Correct!");
-          $background.css(
-            `background-color`,
-            `hsl(${hue}, ${saturation}%, ${light}%)` // changes bg colour to correct colour
-          );
-          $buttons.css(
-            `background-color`,
-            `hsl(${hue}, ${saturation}%, ${light}%)` //changes all colour buttons to the correct colour
-          );
+          correctAnswer(`hsl(${hue}, ${saturation}%, ${light}%)`);
         } else {
-          $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
-          resetBackGround();
+          wrongAnswer();
         }
       });
   }
 };
 
-// sets the game up in hex/hard mode
+// ****** SETS UP GAME IN HEX/HARD MODE *******
 const hexMode = function() {
   // a function to set the button color using a hex value
   const setHexButtonColour = function(button, hex) {
@@ -217,14 +218,9 @@ const hexMode = function() {
       .off() //.off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
         if (this === $buttons[answerButton]) {
-          score++;
-          $answerMessage.html("Correct!");
-          $background.css(`background-color`, `${hexVal}`); // changes bg colour to correct colour
-          $buttons.css(`background-color`, `${hexVal}`); //changes all colour buttons to the correct colour
+          correctAnswer(`${hexVal}`);
         } else {
-          $answerMessage.html("Wrong answer!");
-          $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
-          resetBackGround();
+          wrongAnswer();
         }
       });
   }
@@ -259,7 +255,7 @@ app.modal = () => {
   });
 };
 
-// function to start game when a level button is clicked
+// ****** STARTS GAME WHEN LEVELE BUTTON IS CLICKED *******
 app.startGame = () => {
   answerMessageReset();
 
