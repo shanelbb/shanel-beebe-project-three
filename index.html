@@ -99,6 +99,34 @@
       <div class="finalScore">
         <h2 class="finalScoreMessage"></h2>
         <button class="restart">Restart Game</button>
+
+        <a
+          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          class="twitter-share-button"
+          data-text="I played Guess That Colour! Made by @ShanelBeebe."
+          data-show-count="false"
+          data-size="large"
+          >Tweet</a
+        >
+        <script>
+          window.twttr = (function(d, s, id) {
+            var js,
+              fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+
+            return t;
+          })(document, "script", "twitter-wjs");
+        </script>
       </div>
     </div>
     <!-- Wrapper ends here -->
