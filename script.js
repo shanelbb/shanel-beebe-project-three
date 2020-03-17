@@ -67,7 +67,7 @@ const endGame = () => {
     $gamePage.hide();
     $final.show();
     $score.html(`Your final score is: </br>
-    ${score} / 10`);
+    <span class="bold">${score} / 10</span>`);
   }
 };
 
@@ -102,7 +102,7 @@ const rgbMode = function() {
     // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br>
-   rgb(${red}, ${green}, ${blue})`);
+  <span class="bold">rgb(${red}, ${green}, ${blue})</span>`);
     }
 
     // event handler that displays "Correct" or "Wrong" based on user input.
@@ -153,7 +153,7 @@ const hslMode = function() {
     // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br> 
-   hsl(${hue}, ${saturation}%, ${light}%)`);
+   <span class="bold">hsl(${hue}, ${saturation}%, ${light}%)</span>`);
     }
 
     // event handler that displays "Correct" or "Wrong" based on user input.
@@ -208,8 +208,8 @@ const hexMode = function() {
 
     // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
-      $colorValue.html(`Guess which colour matches this colour code: </br> Hex
-   ${hexVal}`);
+      $colorValue.html(`Guess which colour matches this colour code: </br> 
+   <span class="bold">Hex ${hexVal}</span>`);
     }
 
     // event handler that displays "Correct" or "Wrong" based on user input.

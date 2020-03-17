@@ -459,6 +459,11 @@ button {
   outline: none;
 }
 
+.bold {
+  font-weight: 700;
+  font-size: 2.7rem;
+}
+
 .colourButton {
   width: 200px;
   height: 200px;
@@ -578,7 +583,7 @@ button {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modalContent {
   background-color: #fefefe;
   margin: 15% auto;
   /* 15% from the top and centered */
@@ -618,7 +623,7 @@ button {
 @media (min-width: 1800px) {
   .wrapper {
     max-width: 1600px;
-    height: 60vh;
+    height: auto;
   }
   h1 {
     font-size: 6rem;
@@ -632,9 +637,20 @@ button {
   button {
     font-size: 3rem;
   }
+  .bold {
+    font-size: 3.3rem;
+  }
   .colourButton {
     width: 300px;
     height: 300px;
+  }
+  #reset,
+  .restart,
+  .startButtons {
+    margin-bottom: 40px;
+  }
+  .modalContent {
+    max-width: 1600px;
   }
 }
 
@@ -652,6 +668,9 @@ button {
   h2,
   button {
     font-size: 2rem;
+  }
+  .bold {
+    font-size: 2.3rem;
   }
   .levelButton {
     width: 150px;
@@ -680,7 +699,18 @@ button {
 
 @media (max-height: 650px) {
   body {
-    min-height: 120vh;
+    min-height: 125vh;
+  }
+  .wrapper {
+    height: auto;
+  }
+  h1 {
+    margin-top: 30px;
+  }
+  #reset,
+  .restart,
+  #hard {
+    margin-bottom: 40px;
   }
 }
 
@@ -690,6 +720,7 @@ button {
   }
   h1 {
     font-size: 3.5rem;
+    margin-top: 30px;
     padding: 10px;
   }
   h2 {
@@ -741,6 +772,9 @@ button {
   }
   h2 {
     font-size: 1.6rem;
+  }
+  .bold {
+    font-size: 2rem;
   }
   .colourButton {
     width: 90px;
