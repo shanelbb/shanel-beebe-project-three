@@ -58,7 +58,7 @@ const correctAnswer = function(colorValue) {
   $answerMessage.html("Correct!");
   $background.css(`background-color`, colorValue); // changes bg colour to correct colour
   $buttons.css(`background-color`, colorValue); //changes all colour buttons to the correct colour
-  $buttons.off("click");
+  $buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
 
 // Wrong answer function
@@ -66,7 +66,7 @@ const wrongAnswer = () => {
   $answerMessage.html("Wrong answer!");
   $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
   resetBackGround();
-  $buttons.off("click");
+  $buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
 
 // Function called after user answers 10 questions; displays final score screen
@@ -106,7 +106,7 @@ const rgbMode = function() {
     return Math.floor(Math.random() * 256);
   };
 
-  // generates a random numer between 0 and 3 or number of buttons - 1.
+  // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
   // a loop to set each button to a random rgb value
@@ -116,7 +116,7 @@ const rgbMode = function() {
     const blue = makeRGBValue();
     setRGBButtonColour($buttons[i], red, green, blue);
 
-    // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br>
   <span class="bold">rgb(${red}, ${green}, ${blue})</span>`);
@@ -152,7 +152,7 @@ const hslMode = function() {
     return Math.floor(Math.random() * 101);
   };
 
-  // generates a random numer between 0 and 3 or number of buttons - 1.
+  // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
   // a loop to set each button to a random hsl value
@@ -162,7 +162,7 @@ const hslMode = function() {
     const light = makeSLValues();
     setHSLButtonColour($buttons[i], hue, saturation, light);
 
-    // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br> 
    <span class="bold">hsl(${hue}, ${saturation}%, ${light}%)</span>`);
@@ -199,7 +199,7 @@ const hexMode = function() {
     return hexCode;
   };
 
-  // generates a random numer between 0 and 3 or number of button - 1.
+  // generates a random numer between 0 and 3 or number of button - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
   // a loop to set each button to a random hex value
@@ -207,7 +207,7 @@ const hexMode = function() {
     const hexVal = makeHexValue();
     setHexButtonColour($buttons[i], hexVal);
 
-    // if value of answerButton equals index of $buttons (above) display the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br> 
    <span class="bold">Hex ${hexVal}</span>`);
@@ -228,26 +228,20 @@ const hexMode = function() {
 
 // ********* INFO MODAL FUNCTIONALITY ***********
 app.modal = () => {
-  // Get the modal
+  // Gets the modal
   const $modal = $(".infoModal");
 
-  // Get the button that opens the modal
-  const $infoBtn = $("#infoBtn");
-
-  // Get the <span> element that closes the modal
-  const $span = $(".close");
-
-  // When the user clicks on the button, open the modal
-  $infoBtn.on("click", function() {
+  // Opens the modal when the user clicks on the button
+  $("#infoBtn").on("click", function() {
     $modal.css("display", "block");
   });
 
-  // When the user clicks on <span> (x), close the modal
-  $span.click(function() {
+  // Closes the modal when the user clicks on <span> (x)
+  $(".close").click(function() {
     $modal.css("display", "none");
   });
 
-  // When the user clicks anywhere outside of the modal, close it
+  // Closes the modal when the user clicks anywhere outside of it
   $(window).click(function(event) {
     if ($(event.target).is($modal)) {
       $modal.css("display", "none");
@@ -257,6 +251,7 @@ app.modal = () => {
 
 // ****** STARTS GAME WHEN LEVELE BUTTON IS CLICKED *******
 app.startGame = () => {
+  //sets the answer message to "choose carefully"
   answerMessageReset();
 
   // hides the landing page and reveals the game page

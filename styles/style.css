@@ -553,6 +553,7 @@ button {
 
 .restart {
   padding: 15px 30px;
+  margin-bottom: 40px;
 }
 
 .resetButton,
@@ -560,6 +561,10 @@ button {
 #infoBtn {
   padding: 10px 20px;
   font-size: 2rem;
+}
+
+.twitter-share-button {
+  margin: 30px 0;
 }
 
 /* The Modal (background) */
@@ -697,7 +702,7 @@ button {
   }
 }
 
-@media (max-height: 650px) {
+@media (max-height: 730px) {
   body {
     min-height: 125vh;
   }
@@ -740,6 +745,11 @@ button {
   .colourButton {
     width: 150px;
     height: 150px;
+  }
+  #reset,
+  .restart,
+  #hard {
+    margin-bottom: 40px;
   }
 }
 
