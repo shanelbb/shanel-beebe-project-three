@@ -1,15 +1,15 @@
 const app = {};
 
 // cached selectors
-const $buttons = $(".colourButton");
-const $background = $("body");
-const $colorValue = $("#colourValue");
 const $answerMessage = $("#answer");
-const $gamePage = $(".gamePage");
-const $startPage = $(".startPage");
-const $next = $(".nextQuestion");
+const $background = $("body");
+const $buttons = $(".colourButton");
+const $colorValue = $("#colourValue");
 const $final = $(".finalScore");
+const $gamePage = $(".gamePage");
+const $next = $(".nextQuestion");
 const $score = $(".finalScoreMessage");
+const $startPage = $(".startPage");
 
 // **** APP STARTING PAGE ****
 app.landingPage = function() {
@@ -294,9 +294,7 @@ app.startGame = () => {
 
   $(".restart")
     .off("click")
-    .on("click", function() {
-      app.reset();
-    });
+    .on("click", app.reset);
 };
 
 // game initilization function

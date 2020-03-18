@@ -108,6 +108,12 @@
   }
 }
 
+@media (max-width: 896px) and (orientation: landscape) {
+  body {
+    min-height: 250vh;
+  }
+}
+
 @media (max-width: 620px) {
   .wrapper {
     height: auto;
