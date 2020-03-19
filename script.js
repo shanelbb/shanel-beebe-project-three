@@ -230,20 +230,29 @@ const hexMode = function() {
 app.modal = () => {
   // Gets the modal
   const $modal = $(".infoModal");
+  // Gets the <span> (x)
+  const $close = $(".close");
 
   // Opens the modal when the user clicks on the button
   $("#infoBtn").on("click", function() {
     $modal.css("display", "block");
   });
 
+  // Instructs the event handler to close the modal on click or enter
+  function handleClose(e) {
+    if (e.type === "click" || e.key === "Enter") {
+      $modal.css("display", "none");
+    }
+  }
   // Closes the modal when the user clicks on <span> (x)
-  $(".close").click(function() {
-    $modal.css("display", "none");
-  });
+  $close.on("click", handleClose);
+
+  // Closes the modal with enter button when tabbing through page
+  $close.on("keyup", handleClose);
 
   // Closes the modal when the user clicks anywhere outside of it
-  $(window).click(function(event) {
-    if ($(event.target).is($modal)) {
+  $(window).click(function(e) {
+    if ($(e.target).is($modal)) {
       $modal.css("display", "none");
     }
   });
