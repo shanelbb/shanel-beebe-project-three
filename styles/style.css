@@ -406,6 +406,14 @@ button {
           box-shadow: 1px 1px 1px 1px dimgray;
 }
 
+h3 {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px;
+  text-transform: uppercase;
+}
+
 .startPage,
 .gamePage,
 .finalScore {
@@ -489,15 +497,31 @@ button {
 }
 
 #buttonWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin: 0 auto;
   width: 80vw;
-  max-width: 1280px;
+  max-width: 1240px;
   border: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto];
+      grid-template-columns: repeat(auto, minmax(250px, 1fr));
+  -webkit-column-count: 4;
+          column-count: 4;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.grid-item2,
+.grid-item4,
+.grid-item6,
+.grid-item8 {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
 }
 
 #colourValue {
@@ -646,8 +670,8 @@ button {
     font-size: 3.3rem;
   }
   .colourButton {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
   }
   #reset,
   .restart,
@@ -714,7 +738,7 @@ button {
   }
   #reset,
   .restart,
-  #hard {
+  #hex {
     margin-bottom: 40px;
   }
 }
@@ -754,7 +778,7 @@ button {
   }
   #reset,
   .restart,
-  #hard {
+  #hex {
     margin-bottom: 40px;
   }
 }

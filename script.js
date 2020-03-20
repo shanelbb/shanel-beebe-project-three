@@ -7,6 +7,7 @@ const $buttons = $(".colourButton");
 const $colorValue = $("#colourValue");
 const $final = $(".finalScore");
 const $gamePage = $(".gamePage");
+const $h3 = $("h3");
 const $next = $(".nextQuestion");
 const $score = $(".finalScoreMessage");
 const $startPage = $(".startPage");
@@ -27,10 +28,15 @@ const answerMessageReset = () => {
   $answerMessage.html("Choose carefully!");
 };
 
+const nameReset = () => {
+  $h3.html("");
+};
+
 // resets background color and answer message
 const resetPlay = () => {
   resetBackGround();
   answerMessageReset();
+  nameReset();
 };
 
 // starts score at 0
@@ -94,7 +100,7 @@ app.reset = () => {
   resetCounter();
 };
 
-//  ****** SETS UP GAME IN RGB/EASY MODE *******
+//  ****** SETS UP GAME IN RGB MODE *******
 const rgbMode = function() {
   // a function to set the button color using an rgb value
   const setRGBButtonColour = function(button, red, green, blue) {
@@ -135,7 +141,7 @@ const rgbMode = function() {
   }
 };
 
-//  ****** SETS UP GAME IN HSL/MEDIUM MODE *******
+//  ****** SETS UP GAME IN HSL MODE *******
 const hslMode = function() {
   // a function to set the button color using an hsl value
   const setHSLButtonColour = function(button, h, s, l) {
@@ -181,7 +187,7 @@ const hslMode = function() {
   }
 };
 
-// ****** SETS UP GAME IN HEX/HARD MODE *******
+// ****** SETS UP GAME IN HEX MODE *******
 const hexMode = function() {
   // a function to set the button color using a hex value
   const setHexButtonColour = function(button, hex) {
@@ -223,6 +229,68 @@ const hexMode = function() {
           wrongAnswer();
         }
       });
+  }
+};
+
+const namedMode = function() {
+  const makeHexValue = () => {
+    let hexCode = "";
+    const hexValues = "0123456789abcdef";
+
+    while (hexCode.length < 6) {
+      hexCode += hexValues[Math.floor(Math.random() * hexValues.length)];
+    }
+    return hexCode;
+  };
+
+  const setButtonColour = function(button, red, green, blue) {
+    $(button).css("background-color", `rgb(${red}, ${green}, ${blue})`);
+  };
+
+  const setButtonName = function(button, name) {
+    button.append(name);
+  };
+
+  const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
+
+  const endpoint = "https://api.color.pizza/v1/";
+
+  function handleError(err) {
+    console.log("Oh NO!!");
+    console.log(err);
+  }
+
+  for (let i = 0; i < $buttons.length; i++) {
+    $.ajax({
+      url: `${endpoint}${makeHexValue()}?noduplicates=true`,
+      dataType: "json",
+      method: "GET"
+    })
+      .then(function(res) {
+        const html = `${res.colors[0].name}`;
+        setButtonName($h3[i], html);
+        const r = res.colors[0].rgb.r;
+        const g = res.colors[0].rgb.g;
+        const b = res.colors[0].rgb.b;
+        setButtonColour($buttons[i], r, g, b);
+
+        if (i === answerButton) {
+          $colorValue.html(`Guess which colour matches this colour code: </br>
+  <span class="bold">rgb(${r}, ${g}, ${b})</span>`);
+        }
+
+        // event handler that displays "Correct" or "Wrong" based on user input.
+        $($buttons[i])
+          .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
+          .one("click", function() {
+            if (this === $buttons[answerButton]) {
+              correctAnswer(`rgb(${r}, ${g}, ${b})`);
+            } else {
+              wrongAnswer();
+            }
+          });
+      })
+      .catch(handleError);
   }
 };
 
@@ -269,8 +337,17 @@ app.startGame = () => {
     $gamePage.show();
   });
 
-  // takes users to easy/rgb mode of the game when easy button is clicked
-  $(".easy").on("click", function() {
+  // Takes users to the named mode when the named button is clicked
+  $(".named").on("click", function() {
+    namedMode();
+    $next.off("click").on("click", function() {
+      namedMode();
+      setNextQ();
+    });
+  });
+
+  // takes users to rgb mode of the game when rgb button is clicked
+  $(".rgb").on("click", function() {
     rgbMode();
     $next.off("click").on("click", function() {
       rgbMode();
@@ -278,8 +355,8 @@ app.startGame = () => {
     });
   });
 
-  // takes users to medium/hsl mode of the game when medium button is clicked
-  $(".medium").on("click", function() {
+  // takes users to hsl mode of the game when hsl button is clicked
+  $(".hsl").on("click", function() {
     hslMode();
     $next.off("click").on("click", function() {
       hslMode();
@@ -287,8 +364,8 @@ app.startGame = () => {
     });
   });
 
-  // takes users to hard/hex mode of the game when hard button is clicked
-  $(".hard").on("click", function() {
+  // takes users to hex mode of the game when hex button is clicked
+  $(".hex").on("click", function() {
     hexMode();
     $next.off("click").on("click", function() {
       hexMode();
