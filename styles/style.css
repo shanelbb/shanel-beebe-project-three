@@ -406,7 +406,7 @@ button {
           box-shadow: 1px 1px 1px 1px dimgray;
 }
 
-h3 {
+label {
   font-family: "Ubuntu Mono", monospace;
   font-size: 2rem;
   text-align: center;
@@ -504,22 +504,22 @@ h3 {
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto];
       grid-template-columns: repeat(auto, minmax(250px, 1fr));
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
   -webkit-column-count: 4;
           column-count: 4;
   -webkit-column-gap: 20px;
           column-gap: 20px;
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.grid-item2,
-.grid-item4,
-.grid-item6,
-.grid-item8 {
+.gridItem2,
+.gridItem4,
+.gridItem6,
+.gridItem8 {
   -ms-grid-row: 2;
       grid-row-start: 2;
 }
@@ -683,10 +683,42 @@ h3 {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1230px) {
   .colourButton {
     width: 150px;
     height: 150px;
+  }
+}
+
+@media (max-width: 1020px) {
+  body {
+    min-height: 125vh;
+  }
+  .wrapper {
+    height: auto;
+  }
+  #buttonWrapper {
+    -webkit-column-count: 2;
+            column-count: 2;
+  }
+  .colourButton {
+    width: 200px;
+    height: 200px;
+  }
+  .gridItem5,
+  .gridItem7 {
+    -ms-grid-row: 3;
+        grid-row-start: 3;
+  }
+  .gridItem6,
+  .gridItem8 {
+    -ms-grid-row: 4;
+        grid-row-start: 4;
+  }
+  #reset,
+  .restart,
+  #hex {
+    margin-bottom: 40px;
   }
 }
 
@@ -698,16 +730,15 @@ h3 {
   button {
     font-size: 2rem;
   }
+  label {
+    font-size: 1.8rem;
+  }
   .bold {
     font-size: 2.3rem;
   }
   .levelButton {
     width: 150px;
     height: 40px;
-  }
-  .colourButton {
-    width: 125px;
-    height: 125px;
   }
   .restart {
     padding: 10px 20px;
@@ -716,10 +747,6 @@ h3 {
 }
 
 @media (max-width: 750px) {
-  .colourButton {
-    width: 100px;
-    height: 100px;
-  }
   .modalText {
     font-size: 1.3rem;
     line-height: 1.8rem;
@@ -728,7 +755,7 @@ h3 {
 
 @media (max-height: 730px) {
   body {
-    min-height: 125vh;
+    height: 150vh;
   }
   .wrapper {
     height: auto;
@@ -749,10 +776,14 @@ h3 {
   }
 }
 
-@media (max-width: 620px) {
-  .wrapper {
-    height: auto;
+@media (max-width: 680px) {
+  .colourButton {
+    width: 150px;
+    height: 150px;
   }
+}
+
+@media (max-width: 620px) {
   h1 {
     font-size: 3.5rem;
     margin-top: 30px;
@@ -762,19 +793,8 @@ h3 {
     padding: 10px;
     line-height: 2.5rem;
   }
-  #buttonWrapper {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .colourButton {
-    width: 150px;
-    height: 150px;
+  .wrapper {
+    width: 90vw;
   }
   #reset,
   .restart,
@@ -783,13 +803,17 @@ h3 {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   h1 {
     font-size: 3rem;
   }
+  label {
+    font-size: 1.6rem;
+    margin: 10px;
+  }
   .colourButton {
-    width: 110px;
-    height: 110px;
+    width: 125px;
+    height: 125px;
   }
 }
 
@@ -812,6 +836,10 @@ h3 {
   }
   h2 {
     font-size: 1.6rem;
+  }
+  label {
+    font-size: 1.4rem;
+    margin: 5px;
   }
   .bold {
     font-size: 2rem;

@@ -7,7 +7,7 @@ const $buttons = $(".colourButton");
 const $colorValue = $("#colourValue");
 const $final = $(".finalScore");
 const $gamePage = $(".gamePage");
-const $h3 = $("h3");
+const $label = $("label");
 const $next = $(".nextQuestion");
 const $score = $(".finalScoreMessage");
 const $startPage = $(".startPage");
@@ -29,7 +29,7 @@ const answerMessageReset = () => {
 };
 
 const nameReset = () => {
-  $h3.html("");
+  $label.html("");
 };
 
 // resets background color and answer message
@@ -232,6 +232,7 @@ const hexMode = function() {
   }
 };
 
+// ********** SETS UP GAME IN NAMED MODE *********
 const namedMode = function() {
   const makeHexValue = () => {
     let hexCode = "";
@@ -256,7 +257,7 @@ const namedMode = function() {
   const endpoint = "https://api.color.pizza/v1/";
 
   function handleError(err) {
-    console.log("Oh NO!!");
+    alert("Loading error: please try refreshing page.");
     console.log(err);
   }
 
@@ -268,7 +269,7 @@ const namedMode = function() {
     })
       .then(function(res) {
         const html = `${res.colors[0].name}`;
-        setButtonName($h3[i], html);
+        setButtonName($label[i], html);
         const r = res.colors[0].rgb.r;
         const g = res.colors[0].rgb.g;
         const b = res.colors[0].rgb.b;

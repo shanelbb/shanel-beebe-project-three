@@ -71,17 +71,17 @@
   border: none;
   display: grid;
   grid-template-columns: repeat(auto, minmax(250px, 1fr));
+  grid-template-rows: auto;
   column-count: 4;
   column-gap: 20px;
-  grid-template-rows: auto;
   justify-items: center;
   align-items: center;
 }
 
-.grid-item2,
-.grid-item4,
-.grid-item6,
-.grid-item8 {
+.gridItem2,
+.gridItem4,
+.gridItem6,
+.gridItem8 {
   grid-row-start: 2;
 }
 
