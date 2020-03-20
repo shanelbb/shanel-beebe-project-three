@@ -348,12 +348,6 @@ body {
   background-size: cover;
   background-color: #adadad;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .wrapper {
@@ -363,42 +357,40 @@ body {
   width: 80%;
   height: 80vh;
   border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-shadow: 2px 2px 2px 2px dimgray;
           box-shadow: 2px 2px 2px 2px dimgray;
 }
 
+h1,
+h2,
+button,
+label,
+p {
+  text-transform: uppercase;
+  text-align: center;
+}
+
 h1 {
   font-family: "Permanent Marker", sans-serif;
-  text-transform: uppercase;
   font-size: 5rem;
-  text-align: center;
   padding: 20px;
 }
 
 h2 {
   padding: 20px;
-  text-transform: uppercase;
   line-height: 3rem;
 }
 
 h2,
-button {
+button,
+label,
+p {
   font-family: "Ubuntu Mono", monospace;
+}
+
+h2,
+button {
   font-size: 2.5rem;
-  text-align: center;
 }
 
 button {
@@ -407,13 +399,12 @@ button {
 }
 
 label {
-  font-family: "Ubuntu Mono", monospace;
   font-size: 2rem;
-  text-align: center;
   margin: 20px;
-  text-transform: uppercase;
 }
 
+body,
+.wrapper,
 .startPage,
 .gamePage,
 .finalScore {
@@ -424,12 +415,12 @@ label {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .startPage {
@@ -457,7 +448,6 @@ label {
           box-shadow: 1px 1px 1px 1px dimgray;
   border-radius: 10px;
   margin: 20px;
-  text-transform: uppercase;
 }
 
 .levelButton:focus {
@@ -470,30 +460,6 @@ label {
 .bold {
   font-weight: 700;
   font-size: 2.7rem;
-}
-
-.colourButton {
-  width: 200px;
-  height: 200px;
-  border: none;
-  border-radius: 50%;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  margin: 15px;
-  outline: none;
-  -webkit-box-shadow: 2px 2px 2px 2px dimgray;
-          box-shadow: 2px 2px 2px 2px dimgray;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.colourButton:hover, .colourButton:focus {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.colourButton:focus {
-  border: 2px solid black;
 }
 
 #buttonWrapper {
@@ -524,18 +490,37 @@ label {
       grid-row-start: 2;
 }
 
-#colourValue {
-  margin: 0 auto;
+.colourButton {
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50%;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 15px;
+  outline: none;
+  -webkit-box-shadow: 2px 2px 2px 2px dimgray;
+          box-shadow: 2px 2px 2px 2px dimgray;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
+.colourButton:hover, .colourButton:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.colourButton:focus {
+  border: 2px solid black;
+}
+
+#colourValue,
 #answer {
   margin: 0 auto;
-  text-align: center;
 }
 
 #reset {
   margin: 0 auto;
-  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -623,22 +608,20 @@ label {
 }
 
 .modalText {
-  font-family: "Ubuntu Mono", monospace;
   font-size: 1.6rem;
   line-height: 20px;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 /* The Close Button */
 .close {
   background-color: #adadad;
-  width: 27px;
-  height: 27px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   color: white;
   float: right;
-  font-size: 28px;
+  font-size: 2.8rem;
+  text-align: center;
   font-weight: bold;
 }
 
@@ -679,7 +662,10 @@ label {
     margin-bottom: 40px;
   }
   .modalContent {
-    max-width: 1600px;
+    max-width: 1280px;
+  }
+  .modalHeader {
+    padding: 20px;
   }
 }
 

@@ -28,6 +28,7 @@ const answerMessageReset = () => {
   $answerMessage.html("Choose carefully!");
 };
 
+// resets the colour name label to blank between each turn in named mode
 const nameReset = () => {
   $label.html("");
 };
@@ -67,7 +68,7 @@ const correctAnswer = function(colorValue) {
   $buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
 
-// Wrong answer function
+// wrong answer function
 const wrongAnswer = () => {
   $answerMessage.html("Wrong answer!");
   $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
@@ -75,7 +76,7 @@ const wrongAnswer = () => {
   $buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
 
-// Function called after user answers 10 questions; displays final score screen
+// ends game after user answers 10 questions; displays final score screen
 const endGame = () => {
   if (questionCounter === maxQuestions) {
     $gamePage.hide();
@@ -102,12 +103,12 @@ app.reset = () => {
 
 //  ****** SETS UP GAME IN RGB MODE *******
 const rgbMode = function() {
-  // a function to set the button color using an rgb value
+  // sets the button color using an rgb value
   const setRGBButtonColour = function(button, red, green, blue) {
     $(button).css(`background-color`, `rgb(${red}, ${green}, ${blue})`);
   };
 
-  // a function to generate a random number between 0 and 255
+  // generates a random number between 0 and 255
   const makeRGBValue = () => {
     return Math.floor(Math.random() * 256);
   };
@@ -115,20 +116,20 @@ const rgbMode = function() {
   // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
-  // a loop to set each button to a random rgb value
   for (let i = 0; i < $buttons.length; i++) {
+    // loops through each button to set them each to a random rgb value
     const red = makeRGBValue();
     const green = makeRGBValue();
     const blue = makeRGBValue();
     setRGBButtonColour($buttons[i], red, green, blue);
 
-    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br>
   <span class="bold">rgb(${red}, ${green}, ${blue})</span>`);
     }
 
-    // event handler that displays "Correct" or "Wrong" based on user input.
+    // event handler to take in user guess and respond according to whether they are right or wrong
     $($buttons[i])
       .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
@@ -143,17 +144,17 @@ const rgbMode = function() {
 
 //  ****** SETS UP GAME IN HSL MODE *******
 const hslMode = function() {
-  // a function to set the button color using an hsl value
+  // sets the button color using an hsl value
   const setHSLButtonColour = function(button, h, s, l) {
     $(button).css(`background-color`, `hsl(${h}, ${s}%, ${l}%)`);
   };
 
-  // a function to generate a random number between 0 and 360 for the hue value
+  // generates a random number between 0 and 360 for the hue value
   const makeHValue = () => {
     return Math.floor(Math.random() * 361);
   };
 
-  // a function to generate a random number between 0 and 100 for the saturation and lightness values
+  // generates a random number between 0 and 100 for the saturation and lightness values
   const makeSLValues = () => {
     return Math.floor(Math.random() * 101);
   };
@@ -161,20 +162,20 @@ const hslMode = function() {
   // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
-  // a loop to set each button to a random hsl value
   for (let i = 0; i < $buttons.length; i++) {
+    // loops through each button to set them each to a random hsl value
     const hue = makeHValue();
     const saturation = makeSLValues();
     const light = makeSLValues();
     setHSLButtonColour($buttons[i], hue, saturation, light);
 
-    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br> 
    <span class="bold">hsl(${hue}, ${saturation}%, ${light}%)</span>`);
     }
 
-    // event handler that displays "Correct" or "Wrong" based on user input.
+    // event handler to take in user guess and respond according to whether they are right or wrong
     $($buttons[i])
       .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
@@ -189,12 +190,12 @@ const hslMode = function() {
 
 // ****** SETS UP GAME IN HEX MODE *******
 const hexMode = function() {
-  // a function to set the button color using a hex value
+  // sets the button color using a hex value
   const setHexButtonColour = function(button, hex) {
     $(button).css(`background-color`, `${hex}`);
   };
 
-  // a function to generate a random hex value by iterating over a string
+  // generates a random hex value
   const makeHexValue = () => {
     let hexCode = "#";
     const hexValues = "0123456789abcdef";
@@ -208,18 +209,18 @@ const hexMode = function() {
   // generates a random numer between 0 and 3 or number of button - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
-  // a loop to set each button to a random hex value
   for (let i = 0; i < $buttons.length; i++) {
+    // loops through each button to set them each to a random hex value
     const hexVal = makeHexValue();
     setHexButtonColour($buttons[i], hexVal);
 
-    // if value of answerButton equals index of $buttons displays the corresponding colour code in the h2 with the class of colorValue
+    // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
       $colorValue.html(`Guess which colour matches this colour code: </br> 
    <span class="bold">Hex ${hexVal}</span>`);
     }
 
-    // event handler that displays "Correct" or "Wrong" based on user input.
+    // event handler to take in user guess and respond according to whether they are right or wrong
     $($buttons[i])
       .off() //.off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
       .one("click", function() {
@@ -234,6 +235,7 @@ const hexMode = function() {
 
 // ********** SETS UP GAME IN NAMED MODE *********
 const namedMode = function() {
+  // generates a random hex value to use with the endpoint url to get button colours from api
   const makeHexValue = () => {
     let hexCode = "";
     const hexValues = "0123456789abcdef";
@@ -244,24 +246,29 @@ const namedMode = function() {
     return hexCode;
   };
 
+  // sets button colours using rgb values taken from the api call results
   const setButtonColour = function(button, red, green, blue) {
     $(button).css("background-color", `rgb(${red}, ${green}, ${blue})`);
   };
 
-  const setButtonName = function(button, name) {
-    button.append(name);
+  // adds name of colour to the label beneath each button
+  const setButtonName = function(el, name) {
+    el.append(name);
   };
 
+  // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
   const answerButton = Math.floor(Math.random() * ($buttons.length - 1));
 
+  // api url
   const endpoint = "https://api.color.pizza/v1/";
 
+  // what to do in case of error from api call
   function handleError(err) {
-    alert("Loading error: please try refreshing page.");
-    console.log(err);
+    setButtonName($label, `<label>(${err.statusText}</label>)`);
   }
 
   for (let i = 0; i < $buttons.length; i++) {
+    // Loops through each button to set a button colour and name taken from the api
     $.ajax({
       url: `${endpoint}${makeHexValue()}?noduplicates=true`,
       dataType: "json",
@@ -275,12 +282,13 @@ const namedMode = function() {
         const b = res.colors[0].rgb.b;
         setButtonColour($buttons[i], r, g, b);
 
+        // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
         if (i === answerButton) {
           $colorValue.html(`Guess which colour matches this colour code: </br>
   <span class="bold">rgb(${r}, ${g}, ${b})</span>`);
         }
 
-        // event handler that displays "Correct" or "Wrong" based on user input.
+        // event handler to take in user guess and respond according to whether they are right or wrong
         $($buttons[i])
           .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
           .one("click", function() {
@@ -297,29 +305,29 @@ const namedMode = function() {
 
 // ********* INFO MODAL FUNCTIONALITY ***********
 app.modal = () => {
-  // Gets the modal
+  // gets the modal
   const $modal = $(".infoModal");
   // Gets the <span> (x)
   const $close = $(".close");
 
-  // Opens the modal when the user clicks on the button
+  // opens the modal when the user clicks on the button
   $("#infoBtn").on("click", function() {
     $modal.css("display", "block");
   });
 
-  // Instructs the event handler to close the modal on click or enter
+  // instructs the event handler to close the modal on click or enter
   function handleClose(e) {
     if (e.type === "click" || e.key === "Enter") {
       $modal.css("display", "none");
     }
   }
-  // Closes the modal when the user clicks on <span> (x)
+  // closes the modal when the user clicks on <span> (x)
   $close.on("click", handleClose);
 
-  // Closes the modal with enter button when tabbing through page
+  // closes the modal with enter button when tabbing through page
   $close.on("keyup", handleClose);
 
-  // Closes the modal when the user clicks anywhere outside of it
+  // closes the modal when the user clicks anywhere outside of it
   $(window).click(function(e) {
     if ($(e.target).is($modal)) {
       $modal.css("display", "none");
@@ -375,13 +383,9 @@ app.startGame = () => {
   });
 
   // resets game to landing page when restart or start over buttons are clicked
-  $(".resetButton")
-    .off("click")
-    .on("click", app.reset);
+  $(".resetButton").on("click", app.reset);
 
-  $(".restart")
-    .off("click")
-    .on("click", app.reset);
+  $(".restart").on("click", app.reset);
 };
 
 // game initilization function

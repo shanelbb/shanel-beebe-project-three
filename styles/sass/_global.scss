@@ -8,8 +8,6 @@ body {
   background-size: cover;
   background-color: #adadad;
   height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
 .wrapper {
@@ -19,32 +17,39 @@ body {
   width: 80%;
   height: 80vh;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   box-shadow: 2px 2px 2px 2px dimgray;
+}
+
+h1,
+h2,
+button,
+label,
+p {
+  text-transform: uppercase;
+  text-align: center;
 }
 
 h1 {
   font-family: "Permanent Marker", sans-serif;
-  text-transform: uppercase;
   font-size: 5rem;
-  text-align: center;
   padding: 20px;
 }
 
 h2 {
   padding: 20px;
-  text-transform: uppercase;
   line-height: 3rem;
 }
 
 h2,
-button {
+button,
+label,
+p {
   font-family: "Ubuntu Mono", monospace;
+}
+
+h2,
+button {
   font-size: 2.5rem;
-  text-align: center;
 }
 
 button {
@@ -52,9 +57,6 @@ button {
 }
 
 label {
-  font-family: "Ubuntu Mono", monospace;
   font-size: 2rem;
-  text-align: center;
   margin: 20px;
-  text-transform: uppercase;
 }
