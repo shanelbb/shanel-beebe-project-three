@@ -20,7 +20,7 @@ app.landingPage = function() {
 
 // resets background to original color
 const resetBackGround = () => {
-  $background.attr("style", "background-color: #adadad");
+  $background.attr("style", "background-color: #4aafbc");
 };
 
 // resets answerMessage under color $buttons to original message
@@ -71,7 +71,6 @@ const correctAnswer = function(colorValue) {
 // wrong answer function
 const wrongAnswer = () => {
   $answerMessage.html("Wrong answer!");
-  $buttons.css(`background-color`, `#adadad`); // changes all colour buttons to grey
   resetBackGround();
   $buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
@@ -81,7 +80,7 @@ const endGame = () => {
   if (questionCounter === maxQuestions) {
     $gamePage.hide();
     $final.show();
-    $score.html(`Your final score is: </br>
+    $score.html(`Your final score is:
     <span class="bold">${score} / 10</span>`);
   }
 };
@@ -125,7 +124,7 @@ const rgbMode = function() {
 
     // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
-      $colorValue.html(`Guess which colour matches this colour code: </br>
+      $colorValue.html(`Guess which colour matches this colour code:
   <span class="bold">rgb(${red}, ${green}, ${blue})</span>`);
     }
 
@@ -137,6 +136,11 @@ const rgbMode = function() {
           correctAnswer(`rgb(${red}, ${green}, ${blue})`);
         } else {
           wrongAnswer();
+          // change all colour buttons to correct colour
+          $buttons.css(
+            `background-color`,
+            `${$buttons[answerButton].style.backgroundColor}`
+          );
         }
       });
   }
@@ -171,7 +175,7 @@ const hslMode = function() {
 
     // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
-      $colorValue.html(`Guess which colour matches this colour code: </br> 
+      $colorValue.html(`Guess which colour matches this colour code:  
    <span class="bold">hsl(${hue}, ${saturation}%, ${light}%)</span>`);
     }
 
@@ -183,6 +187,11 @@ const hslMode = function() {
           correctAnswer(`hsl(${hue}, ${saturation}%, ${light}%)`);
         } else {
           wrongAnswer();
+          // change all colour buttons to correct colour
+          $buttons.css(
+            `background-color`,
+            `${$buttons[answerButton].style.backgroundColor}`
+          );
         }
       });
   }
@@ -216,7 +225,7 @@ const hexMode = function() {
 
     // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
     if (i === answerButton) {
-      $colorValue.html(`Guess which colour matches this colour code: </br> 
+      $colorValue.html(`Guess which colour matches this colour code: 
    <span class="bold">Hex ${hexVal}</span>`);
     }
 
@@ -228,6 +237,11 @@ const hexMode = function() {
           correctAnswer(`${hexVal}`);
         } else {
           wrongAnswer();
+          // change all colour buttons to correct colour
+          $buttons.css(
+            `background-color`,
+            `${$buttons[answerButton].style.backgroundColor}`
+          );
         }
       });
   }
@@ -284,7 +298,7 @@ const namedMode = function() {
 
         // if value of answerButton equals index of $buttons appends the corresponding colour code to the h2 with the class of colorValue
         if (i === answerButton) {
-          $colorValue.html(`Guess which colour matches this colour code: </br>
+          $colorValue.html(`Guess which colour matches this colour code:
   <span class="bold">rgb(${r}, ${g}, ${b})</span>`);
         }
 
@@ -296,6 +310,11 @@ const namedMode = function() {
               correctAnswer(`rgb(${r}, ${g}, ${b})`);
             } else {
               wrongAnswer();
+              // change all colour buttons to correct colour
+              $buttons.css(
+                `background-color`,
+                `${$buttons[answerButton].style.backgroundColor}`
+              );
             }
           });
       })

@@ -29,7 +29,7 @@
 
 /* The Close Button */
 .close {
-  background-color: #adadad;
+  background-color: #1d366d;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -42,7 +42,8 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #1d366d;
+  background-color: aliceblue;
   text-decoration: none;
   cursor: pointer;
 }

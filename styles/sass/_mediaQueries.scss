@@ -61,11 +61,42 @@
 
   #buttonWrapper {
     column-count: 2;
+    column-gap: 40px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-top: 30px;
+    padding: 10px;
+  }
+
+  h2 {
+    padding: 10px;
+    line-height: 2.5rem;
+  }
+
+  h2,
+  button {
+    font-size: 2rem;
+  }
+
+  label {
+    font-size: 1.8rem;
   }
 
   .colourButton {
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
+  }
+
+  .gridItem1,
+  .gridItem5 {
+    justify-self: end;
+  }
+
+  .gridItem3,
+  .gridItem7 {
+    justify-self: start;
   }
 
   .gridItem5,
@@ -86,19 +117,6 @@
 }
 
 @media (max-width: 850px) {
-  h1 {
-    font-size: 4rem;
-  }
-
-  h2,
-  button {
-    font-size: 2rem;
-  }
-
-  label {
-    font-size: 1.8rem;
-  }
-
   .bold {
     font-size: 2.3rem;
   }
@@ -141,11 +159,11 @@
   }
 }
 
-@media (max-width: 896px) and (orientation: landscape) {
-  body {
-    min-height: 250vh;
-  }
-}
+// @media (orientation: landscape) {
+//   body {
+//     min-height: 250vh;
+//   }
+// }
 
 @media (max-width: 680px) {
   .colourButton {
@@ -155,17 +173,6 @@
 }
 
 @media (max-width: 620px) {
-  h1 {
-    font-size: 3.5rem;
-    margin-top: 30px;
-    padding: 10px;
-  }
-
-  h2 {
-    padding: 10px;
-    line-height: 2.5rem;
-  }
-
   .wrapper {
     width: 90vw;
   }
@@ -184,6 +191,10 @@
   label {
     font-size: 1.6rem;
     margin: 10px;
+  }
+
+  #buttonWrapper {
+    column-gap: 20px;
   }
 
   .colourButton {

@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css?family=Permanent+Marker|Ubuntu+Mono:400,700&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/35da8f1ae7.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Wrapper starts here -->
@@ -19,7 +23,7 @@
       <!-- The landing page where users can choose a game mode -->
       <section class="startPage">
         <h2>The game that tests your colour knowledge!</h2>
-        <h2>Choose a level:</h2>
+        <h2>Choose your mode:</h2>
         <div id="startButtons" class="startButtons">
           <button id="named" class="named levelButton">Named Mode</button>
           <button id="rgb" class="rgb levelButton">RGB Mode</button>
@@ -34,14 +38,30 @@
         <h2 id="colourValue"></h2>
         <!-- Colour circles -->
         <div id="buttonWrapper">
-          <button id="colourButton1" class="colourButton gridItem1"></button>
-          <label for="colourButton1" class="gridItem2"></label>
-          <button id="colourButton2" class="colourButton gridItem3"></button>
-          <label for="colourButton2" class="gridItem4"></label>
-          <button id="colourButton3" class="colourButton gridItem5"></button>
-          <label for="colourButton3" class="gridItem6"></label>
-          <button id="colourButton4" class="colourButton gridItem7"></button>
-          <label for="colourButton4" class="gridItem8"></label>
+          <button
+            id="colourChoice1"
+            class="colourButton gridItem1"
+            aria-label="colourChoice1"
+          ></button>
+          <label for="colourChoice1" class="gridItem2"></label>
+          <button
+            id="colourChoice2"
+            class="colourButton gridItem3"
+            aria-label="colourChoice2"
+          ></button>
+          <label for="colourChoice2" class="gridItem4"></label>
+          <button
+            id="colourChoice3"
+            class="colourButton gridItem5"
+            aria-label="colourChoice3"
+          ></button>
+          <label for="colourChoice3" class="gridItem6"></label>
+          <button
+            id="colourChoice4"
+            class="colourButton gridItem7"
+            aria-label="colourChoice4"
+          ></button>
+          <label for="colourChoice4" class="gridItem8"></label>
         </div>
         <h2 id="answer"></h2>
 
@@ -56,7 +76,9 @@
           <div id="infoModal" class="infoModal">
             <!-- Modal content -->
             <div class="modalContent">
-              <span class="close" tabindex="0">&times;</span>
+              <span class="close" aria-label="closeWindow" tabindex="0"
+                ><i class="fas fa-times-circle"></i
+              ></span>
               <h1>What the heck is a colour code?</h1>
               <h2 class="modalHeader">RGB Colours</h2>
               <p class="modalText">
