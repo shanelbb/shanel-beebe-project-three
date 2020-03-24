@@ -37,7 +37,7 @@
         <!-- Contains colour code, dynamically generated from JS. -->
         <h2 id="colourValue"></h2>
         <!-- Colour circles -->
-        <div id="buttonWrapper">
+        <div id="buttonWrapper" class="buttonWrapper">
           <button
             id="colourChoice1"
             class="colourButton gridItem1"
@@ -65,12 +65,12 @@
         </div>
         <h2 id="answer"></h2>
 
-        <div id="reset">
+        <div id="reset" class="reset">
           <!-- Moves user on to next question -->
           <button class="nextQuestion">Next Colour</button>
 
           <!-- Trigger/Open The Modal -->
-          <button id="infoBtn">Colour Info</button>
+          <button id="infoBtn" class="infoBtn">Colour Code?</button>
 
           <!-- Modal with info about colour codes -->
           <div id="infoModal" class="infoModal">
@@ -126,7 +126,7 @@
       <!-- Final score page shown after user has answered 10 questions -->
       <div class="finalScore">
         <h2 class="finalScoreMessage"></h2>
-        <button class="restart">Play Again!</button>
+        <button class="restart"><span>Play Again!</span></button>
 
         <!-- Twitter share button -->
         <a

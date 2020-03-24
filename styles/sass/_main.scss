@@ -19,19 +19,24 @@ body,
   flex-wrap: wrap;
 }
 
-.levelButton {
-  background-color: #1d366d;
-  color: aliceblue;
-  width: 200px;
-  height: 50px;
+.levelButton,
+.resetButton,
+.nextQuestion,
+.restart,
+.infoBtn {
+  width: 175px;
+  height: 40px;
+  background-color: $secondary;
+  color: $white;
   border: none;
+  margin: 10px;
   border-radius: 10px;
-  margin: 20px;
+  transition: all 0.4s;
 
   &:focus {
-    border: 2px solid #1d366d;
-    background-color: aliceblue;
-    color: #1d366d;
+    border: 2px solid $secondary;
+    background-color: $white;
+    color: $secondary;
     outline: none;
   }
 }
@@ -42,7 +47,7 @@ body,
   display: block;
 }
 
-#buttonWrapper {
+.buttonWrapper {
   width: 80vw;
   max-width: 1240px;
   border: none;
@@ -72,16 +77,6 @@ body,
   outline: none;
   //Google Material Design Box Shadow
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  transition: all 0.5s;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-
-  &:focus {
-    border: 5px solid #1d366d;
-  }
 }
 
 #colourValue,
@@ -89,7 +84,7 @@ body,
   margin: 0 auto;
 }
 
-#reset {
+.reset {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -98,35 +93,8 @@ body,
   flex-wrap: wrap;
 }
 
-.resetButton,
-.nextQuestion,
-.restart,
-#infoBtn {
-  background-color: #1d366d;
-  color: aliceblue;
-  border: none;
-  margin: 10px;
-  text-transform: uppercase;
-  border-radius: 10px;
-
-  &:focus {
-    border: 2px solid #1d366d;
-    background-color: aliceblue;
-    color: #1d366d;
-    outline: none;
-  }
-}
-
 .restart {
-  padding: 15px 30px;
   margin-bottom: 40px;
-}
-
-.resetButton,
-.nextQuestion,
-#infoBtn {
-  padding: 10px 20px;
-  font-size: 2rem;
 }
 
 .twitter-share-button {
