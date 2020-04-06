@@ -89,16 +89,6 @@
     height: 175px;
   }
 
-  .gridItem1,
-  .gridItem5 {
-    justify-self: end;
-  }
-
-  .gridItem3,
-  .gridItem7 {
-    justify-self: start;
-  }
-
   .gridItem5,
   .gridItem7 {
     grid-row-start: 3;
@@ -163,12 +153,6 @@
     height: 150px;
   }
 }
-
-// @media (orientation: landscape) {
-//   body {
-//     min-height: 250vh;
-//   }
-// }
 
 @media (max-width: 680px) {
   .colourButton {
