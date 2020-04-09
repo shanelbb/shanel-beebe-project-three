@@ -26,11 +26,97 @@
         <h2>Choose your mode:</h2>
         <div id="startButtons" class="startButtons">
           <button id="named" class="named levelButton">Named Mode</button>
+          <button class="info namedInfo">i</button>
           <button id="rgb" class="rgb levelButton">RGB Mode</button>
+          <button class="info rgbInfo">i</button>
           <button id="hsl" class="hsl levelButton">HSL Mode</button>
+          <button class="info hslInfo">i</button>
           <button id="hex" class="hex levelButton">HEX Mode</button>
+          <button class="info hexInfo">i</button>
         </div>
       </section>
+
+      <div class="modal namedInfoModal">
+        <div class="namedModal">
+          <span class="close" aria-label="closeWindow" tabindex="0"
+            ><i class="fas fa-times-circle"></i
+          ></span>
+          <h1 class="modalHeader">Named Mode</h1>
+          <p class="modalText">
+            In named mode, each colour choice will have a colour name associated
+            with it. Users who are visually impaired or colour blind can attempt
+            to guess the right colour based on its name.
+          </p>
+          <h1 class="modalHeader">RGB Colours</h1>
+          <h2>example: rgb(113, 244, 177)</h2>
+          <p class="modalText">
+            RGB defines how much red, green or blue is displayed in a colour
+            value somewhere between 0, which is no representation of the colour,
+            and 255, the highest possible concentration of the colour. So, in
+            the example rgb(255, 0, 0), we’d get a very bright red. If we wanted
+            all green, our RGB values would be (0, 255, 0). For a simple blue,
+            it would be rgb(0, 0, 255). When you mix the values you get colours
+            such as purple(128, 0, 128). While rgb(0, 0, 0) represents black and
+            rgb(255, 255, 255) represents white.
+          </p>
+        </div>
+      </div>
+      <div class="modal rgbInfoModal">
+        <div class="rgbModal">
+          <span class="close" aria-label="closeWindow" tabindex="0"
+            ><i class="fas fa-times-circle"></i
+          ></span>
+          <h1 class="modalHeader">RGB Colours</h1>
+          <h2>example: rgb(113, 244, 177)</h2>
+          <p class="modalText">
+            RGB defines how much red, green or blue is displayed in a colour
+            value somewhere between 0, which is no representation of the colour,
+            and 255, the highest possible concentration of the colour. So, in
+            the example rgb(255, 0, 0), we’d get a very bright red. If we wanted
+            all green, our RGB values would be (0, 255, 0). For a simple blue,
+            it would be rgb(0, 0, 255). When you mix the values you get colours
+            such as purple(128, 0, 128). While rgb(0, 0, 0) represents black and
+            rgb(255, 255, 255) represents white.
+          </p>
+        </div>
+      </div>
+      <div class="modal hslInfoModal">
+        <div class="hslModal">
+          <span class="close" aria-label="closeWindow" tabindex="0"
+            ><i class="fas fa-times-circle"></i
+          ></span>
+          <h1 class="modalHeader">HSL Colours</h1>
+          <h2>example: hsl(239, 80%, 25%)</h2>
+          <p class="modalText">
+            HSL takes three values: Hue is a degree on the color wheel; 0 (or
+            360) is red, 120 is green, 240 is blue. Equidistant between those
+            are yellow, cyan and magenta, at 60, 180 and 300 degrees
+            respectively. Numbers in between reflect different shades.
+            Saturation is a percentage value; 100% is the full colour. Lightness
+            is also a percentage; 0% is dark (black), 100% is light (white), and
+            50% is the average.
+          </p>
+        </div>
+      </div>
+      <div class="modal hexInfoModal">
+        <div class="hexModal">
+          <span class="close" aria-label="closeWindow" tabindex="0"
+            ><i class="fas fa-times-circle"></i
+          ></span>
+          <h1 class="modalHeader">Hex Colours</h1>
+          <h2>example: hex #ce74ab</h2>
+          <p class="modalText">
+            Hexadecimal numbers start with a pound sign (or hashtag), and are
+            followed by six letters or numbers. The characters range from 0-9
+            and A-F. The first two digits refer to red, the next two to green,
+            and the last two to blue. We define how much red, green, and blue
+            are in a colour with values between 00 and FF. The least amount of a
+            colour is represented by 00 and the maximum amount of the colour by
+            FF. A colour that’s maximum red, no green, and no blue would be
+            #FF0000. Black would be #000000 while white would be #FFFFFF.
+          </p>
+        </div>
+      </div>
 
       <!-- Game play page, displayed after user selects a game mode-->
       <section class="gamePage" id="gamePage">
@@ -69,54 +155,6 @@
           <!-- Moves user on to next question -->
           <button class="nextQuestion">Next Colour</button>
 
-          <!-- Trigger/Open The Modal -->
-          <button id="infoBtn" class="infoBtn">Colour Code?</button>
-
-          <!-- Modal with info about colour codes -->
-          <div id="infoModal" class="infoModal">
-            <!-- Modal content -->
-            <div class="modalContent">
-              <span class="close" aria-label="closeWindow" tabindex="0"
-                ><i class="fas fa-times-circle"></i
-              ></span>
-              <h1>What the heck is a colour code?</h1>
-              <h2 class="modalHeader">RGB Colours</h2>
-              <p class="modalText">
-                RGB defines how much red, green or blue is displayed in a colour
-                value somewhere between 0, which is no representation of the
-                colour, and 255, the highest possible concentration of the
-                colour. So, in the example rgb(255, 0, 0), we’d get a very
-                bright red. If we wanted all green, our RGB values would be (0,
-                255, 0). For a simple blue, it would be rgb(0, 0, 255). When you
-                mix the values you get colours such as purple(128, 0, 128).
-                While rgb(0, 0, 0) represents black and rgb(255, 255, 255)
-                represents white.
-              </p>
-              <h2 class="modalHeader">HSL Colours</h2>
-              <p class="modalText">
-                HSL takes three values: Hue is a degree on the color wheel; 0
-                (or 360) is red, 120 is green, 240 is blue. Equidistant between
-                those are yellow, cyan and magenta, at 60, 180 and 300 degrees
-                respectively. Numbers in between reflect different shades.
-                Saturation is a percentage value; 100% is the full colour.
-                Lightness is also a percentage; 0% is dark (black), 100% is
-                light (white), and 50% is the average.
-              </p>
-              <h2 class="modalHeader">Hex Colours</h2>
-              <p class="modalText">
-                Hexadecimal numbers start with a pound sign (or hashtag), and
-                are followed by six letters or numbers. The characters range
-                from 0-9 and A-F. The first two digits refer to red, the next
-                two to green, and the last two to blue. We define how much red,
-                green, and blue are in a colour with values between 00 and FF.
-                The least amount of a colour is represented by 00 and the
-                maximum amount of the colour by FF. A colour that’s maximum red,
-                no green, and no blue would be #FF0000. Black would be #000000
-                while white would be #FFFFFF.
-              </p>
-            </div>
-          </div>
-          <!-- User can start the game over. Brings user back to landing page -->
           <button id="resetButton" class="resetButton">
             Start Again
           </button>

@@ -324,14 +324,28 @@ body,
 }
 
 .startButtons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr 2fr 1fr;
+      grid-template-columns: 2fr 1fr 2fr 1fr;
+  -ms-grid-rows: 2;
+      grid-template-rows: 2;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info {
+  text-transform: lowercase;
+  color: #fffafa;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  font-size: 2rem;
+  border-radius: 50%;
+  background-color: #1d366d;
+  outline: none;
+  border: none;
 }
 
 .levelButton,
@@ -449,8 +463,10 @@ body,
   margin: 30px 0;
 }
 
-/* The Modal (background) */
-.infoModal {
+.namedInfoModal,
+.rgbInfoModal,
+.hslInfoModal,
+.hexInfoModal {
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -470,7 +486,10 @@ body,
 }
 
 /* Modal Content/Box */
-.modalContent {
+.namedModal,
+.rgbModal,
+.hslModal,
+.hexModal {
   background-color: #fefefe;
   margin: 15% auto;
   /* 15% from the top and centered */
@@ -483,6 +502,7 @@ body,
 .modalText {
   font-size: 1.6rem;
   line-height: 20px;
+  margin-bottom: 40px;
 }
 
 /* The Close Button */
@@ -604,7 +624,7 @@ body,
   }
   .reset,
   .restart,
-  .hex {
+  .startButtons {
     margin-bottom: 40px;
   }
 }
@@ -627,6 +647,13 @@ body,
   .modalText {
     font-size: 1.3rem;
     line-height: 1.8rem;
+  }
+  .startButtons {
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+    -ms-grid-rows: 4;
+        grid-template-rows: 4;
+    justify-items: center;
   }
 }
 

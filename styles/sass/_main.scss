@@ -14,9 +14,23 @@ body,
 }
 
 .startButtons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
+  grid-template-rows: 2;
+  align-items: center;
+}
+
+.info {
+  text-transform: lowercase;
+  color: $white;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  font-size: 2rem;
+  border-radius: 50%;
+  background-color: $secondary;
+  outline: none;
+  border: none;
 }
 
 .levelButton,

@@ -111,7 +111,7 @@
 
   .reset,
   .restart,
-  .hex {
+  .startButtons {
     margin-bottom: 40px;
   }
 }
@@ -136,6 +136,11 @@
   .modalText {
     font-size: 1.3rem;
     line-height: 1.8rem;
+  }
+  .startButtons {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 4;
+    justify-items: center;
   }
 }
 

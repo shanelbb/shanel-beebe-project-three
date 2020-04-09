@@ -314,15 +314,26 @@ app.namedMode = function () {
 };
 
 // ********* INFO MODAL FUNCTIONALITY ***********
-app.modal = () => {
-  // gets the modal
-  const $modal = $(".infoModal");
-  // Gets the <span> (x)
+app.modals = () => {
+  const $modal = $(".modal");
   const $close = $(".close");
+  const $namedInfoModal = $(".namedInfoModal");
+  const $rgbInfoModal = $(".rgbInfoModal");
+  const $hslInfoModal = $(".hslInfoModal");
+  const $hexInfoModal = $(".hexInfoModal");
 
-  // opens the modal when the user clicks on the button
-  $("#infoBtn").on("click", function () {
-    $modal.css("display", "block");
+  // opens the corresponding modal when the user clicks on a ? button
+  $(".namedInfo").on("click", function () {
+    $namedInfoModal.css("display", "block");
+  });
+  $(".rgbInfo").on("click", function () {
+    $rgbInfoModal.css("display", "block");
+  });
+  $(".hslInfo").on("click", function () {
+    $hslInfoModal.css("display", "block");
+  });
+  $(".hexInfo").on("click", function () {
+    $hexInfoModal.css("display", "block");
   });
 
   // instructs the event handler to close the modal on click or enter
@@ -415,7 +426,7 @@ app.init = function () {
   // functions
   app.landingPage();
   app.startGame();
-  app.modal();
+  app.modals();
 };
 
 // document ready function
