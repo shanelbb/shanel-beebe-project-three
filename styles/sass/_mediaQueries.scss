@@ -15,8 +15,18 @@
   }
 
   h2,
-  button {
+  button,
+  .result {
     font-size: 3rem;
+  }
+
+  .levelButton,
+  .resetButton,
+  .nextQuestion,
+  .restart,
+  .infoBtn {
+    width: 200px;
+    height: 55px;
   }
 
   .bold {
@@ -131,7 +141,7 @@
 
 @media (max-height: 730px) {
   body {
-    height: 150vh;
+    height: auto;
   }
 
   .wrapper {
@@ -151,6 +161,17 @@
   .colourButton {
     width: 150px;
     height: 150px;
+  }
+}
+
+@media (max-height: 600px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .colourButton {
+    width: 125px;
+    height: 125px;
   }
 }
 

@@ -418,7 +418,7 @@ body,
 
 .result {
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin: 30px;
 }
 
@@ -520,8 +520,17 @@ body,
     line-height: 3.5rem;
   }
   h2,
-  button {
+  button,
+  .result {
     font-size: 3rem;
+  }
+  .levelButton,
+  .resetButton,
+  .nextQuestion,
+  .restart,
+  .infoBtn {
+    width: 200px;
+    height: 55px;
   }
   .bold {
     font-size: 3.3rem;
@@ -623,7 +632,7 @@ body,
 
 @media (max-height: 730px) {
   body {
-    height: 150vh;
+    height: auto;
   }
   .wrapper {
     height: auto;
@@ -639,6 +648,16 @@ body,
   .colourButton {
     width: 150px;
     height: 150px;
+  }
+}
+
+@media (max-height: 600px) {
+  h1 {
+    font-size: 3rem;
+  }
+  .colourButton {
+    width: 125px;
+    height: 125px;
   }
 }
 
