@@ -1,3 +1,4 @@
+// Styling for large resolution screens
 @media (min-width: 1800px) {
   .wrapper {
     max-width: 1600px;
@@ -15,8 +16,7 @@
   }
 
   h2,
-  button,
-  .result {
+  button {
     font-size: 3rem;
   }
 
@@ -53,6 +53,7 @@
   }
 }
 
+// Media queries for lower resolution screens
 @media (max-width: 1230px) {
   .colourButton {
     width: 150px;
@@ -99,6 +100,7 @@
     height: 175px;
   }
 
+  // moves the colour buttons to a 2 x 2 grid with labels underneath each button
   .gridItem5,
   .gridItem7 {
     grid-row-start: 3;
@@ -109,12 +111,15 @@
     grid-row-start: 4;
   }
 
+  // keeps a margin below these buttons on smaller screens
   .reset,
   .restart,
   .startButtons {
     margin-bottom: 40px;
   }
 }
+
+// Styling for tablets
 
 @media (max-width: 850px) {
   .bold {
@@ -137,6 +142,7 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
   }
+  // changes start page buttons to 2 columns from 4
   .startButtons {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 4;
@@ -144,11 +150,14 @@
   }
 }
 
+// styling for shorter screens
 @media (max-height: 730px) {
+  // makes body change size to fit content
   body {
     height: auto;
   }
 
+  // makes wrapper change size to fit content
   .wrapper {
     height: auto;
   }
@@ -186,6 +195,8 @@
     height: 150px;
   }
 }
+
+// styling for mobile phones
 
 @media (max-width: 480px) {
   h1 {

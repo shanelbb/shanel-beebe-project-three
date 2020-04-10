@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Permanent+Marker|Ubuntu+Mono:400,700&display=swap"
       rel="stylesheet"
     />
+    <!-- font awesome cdn -->
     <script
       src="https://kit.fontawesome.com/35da8f1ae7.js"
       crossorigin="anonymous"
@@ -25,17 +26,28 @@
         <h2>The game that tests your colour knowledge!</h2>
         <h2>Choose your mode:</h2>
         <div id="startButtons" class="startButtons">
+          <!-- named mode button -->
           <button id="named" class="named levelButton">Named Mode</button>
+          <!-- named mode information button -->
           <button class="info namedInfo">i</button>
+          <!-- rgb mode button -->
           <button id="rgb" class="rgb levelButton">RGB Mode</button>
+          <!-- rgb information button -->
           <button class="info rgbInfo">i</button>
+          <!-- hsl mode button -->
           <button id="hsl" class="hsl levelButton">HSL Mode</button>
+          <!-- hsl information button -->
           <button class="info hslInfo">i</button>
+          <!-- hex mode button -->
           <button id="hex" class="hex levelButton">HEX Mode</button>
+          <!-- hex information button -->
           <button class="info hexInfo">i</button>
         </div>
       </section>
 
+      <!-- info modals appear on screen when their corresponding info button is pushed -->
+
+      <!-- modal for named mode -->
       <div class="modal namedInfoModal">
         <div class="namedModal">
           <span class="close" aria-label="closeWindow" tabindex="0"
@@ -44,8 +56,8 @@
           <h1 class="modalHeader">Named Mode</h1>
           <p class="modalText">
             In named mode, each colour choice will have a colour name associated
-            with it. Users who are visually impaired or colour blind can attempt
-            to guess the right colour based on its name.
+            with it. If you are a user who is visually impaired or colour blind
+            you can attempt to guess the right colour based on its name.
           </p>
           <h1 class="modalHeader">RGB Colours</h1>
           <h2>example: rgb(113, 244, 177)</h2>
@@ -61,6 +73,7 @@
           </p>
         </div>
       </div>
+      <!-- modal for rgb mode -->
       <div class="modal rgbInfoModal">
         <div class="rgbModal">
           <span class="close" aria-label="closeWindow" tabindex="0"
@@ -80,6 +93,7 @@
           </p>
         </div>
       </div>
+      <!-- modal for hsl mode -->
       <div class="modal hslInfoModal">
         <div class="hslModal">
           <span class="close" aria-label="closeWindow" tabindex="0"
@@ -98,6 +112,7 @@
           </p>
         </div>
       </div>
+      <!-- modal for hex mode -->
       <div class="modal hexInfoModal">
         <div class="hexModal">
           <span class="close" aria-label="closeWindow" tabindex="0"
@@ -122,7 +137,7 @@
       <section class="gamePage" id="gamePage">
         <!-- Contains colour code, dynamically generated from JS. -->
         <h2 id="colourValue"></h2>
-        <!-- Colour circles -->
+        <!-- Four colour buttons, colours generated randomly from JS -->
         <div id="buttonWrapper" class="buttonWrapper">
           <button
             id="colourChoice1"
@@ -149,12 +164,15 @@
           ></button>
           <label for="colourChoice4" class="gridItem8"></label>
         </div>
+        <!-- dynamically generated answer message: "correct!" or "wrong answer" based on user input -->
         <h2 id="answer"></h2>
 
+        <!-- buttons that reset the page to either next question or start page -->
         <div id="reset" class="reset">
-          <!-- Moves user on to next question -->
+          <!-- Button that moves user on to next question -->
           <button class="nextQuestion">Next Colour</button>
 
+          <!-- Button that allows user to start the game over -->
           <button id="resetButton" class="resetButton">
             Start Again
           </button>
@@ -163,7 +181,9 @@
 
       <!-- Final score page shown after user has answered 10 questions -->
       <div class="finalScore">
+        <!-- dynamically generated message with the users final score -->
         <h2 class="finalScoreMessage"></h2>
+        <!-- button that lets user start the game over -->
         <button class="restart"><span>Play Again!</span></button>
       </div>
     </div>

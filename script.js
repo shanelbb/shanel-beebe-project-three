@@ -14,7 +14,7 @@ app.resetBackground = () => {
 // resets answerMessage under color app.buttons to original message
 app.answerMessageReset = () => {
   app.answerMessage.html("Choose carefully!");
-  app.answerMessage.removeClass("result");
+  app.answerMessage.removeClass("bold");
 };
 
 // resets the colour name label to blank between each turn in named mode
@@ -52,7 +52,7 @@ app.setNextQ = () => {
 app.correctAnswer = function (colorValue) {
   app.score++;
   app.answerMessage.html("Correct!");
-  app.answerMessage.addClass("result");
+  app.answerMessage.addClass("bold");
   app.background.css(`background-color`, colorValue); // changes bg colour to correct colour
   app.buttons.css(`background-color`, colorValue); //changes all colour buttons to the correct colour
   app.buttons.off("click"); // disables all answer buttons once one answer has been submitted
@@ -61,7 +61,7 @@ app.correctAnswer = function (colorValue) {
 // wrong answer function
 app.wrongAnswer = () => {
   app.answerMessage.html("Wrong answer");
-  app.answerMessage.addClass("result");
+  app.answerMessage.addClass("bold");
   app.resetBackground();
   app.buttons.off("click"); // disables all answer buttons once one answer has been submitted
 };
@@ -89,6 +89,81 @@ app.reset = () => {
   app.resetPlay();
   app.resetScore();
   app.resetCounter();
+};
+
+// ********** SETS UP GAME IN NAMED MODE *********
+app.namedMode = function () {
+  // generates a random hex value to use with the endpoint url to get button colours from api
+  const makeHexValue = () => {
+    let hexCode = "";
+    const hexValues = "0123456789abcdef";
+
+    while (hexCode.length < 6) {
+      hexCode += hexValues[Math.floor(Math.random() * hexValues.length)];
+    }
+    return hexCode;
+  };
+
+  // sets button colours using rgb values taken from the api call results
+  const setButtonColour = function (button, red, green, blue) {
+    $(button).css("background-color", `rgb(${red}, ${green}, ${blue})`);
+  };
+
+  // adds name of colour to the label beneath each button
+  const setButtonName = function (el, name) {
+    el.append(name);
+  };
+
+  // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
+  const answerButton = Math.floor(Math.random() * (app.buttons.length - 1));
+
+  // api url
+  const endpoint = "https://api.color.pizza/v1/";
+
+  // what to do in case of error from api call
+  function handleError(err) {
+    setButtonName(app.label, `<label>(${err.statusText}</label>)`);
+  }
+
+  for (let i = 0; i < app.buttons.length; i++) {
+    // Loops through each button to set a button colour and name taken from the api
+    $.ajax({
+      url: `${endpoint}${makeHexValue()}?noduplicates=true`,
+      dataType: "json",
+      method: "GET",
+    })
+      .then(function (res) {
+        const html = `${res.colors[0].name}`;
+        setButtonName(app.label[i], html);
+        const r = res.colors[0].rgb.r;
+        const g = res.colors[0].rgb.g;
+        const b = res.colors[0].rgb.b;
+        setButtonColour(app.buttons[i], r, g, b);
+
+        // if value of answerButton equals index of app.buttons appends the corresponding colour code to the h2 with the class of colorValue
+        if (i === answerButton) {
+          app.colourValue.html(`Guess which colour matches this colour code:
+  <span class="bold">rgb(${r}, ${g}, ${b})</span>`);
+        }
+
+        // event handler to take in user guess and respond according to whether they are right or wrong
+        $(app.buttons[i])
+          .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
+          .one("click", function () {
+            if (this === app.buttons[answerButton]) {
+              app.correctAnswer(`rgb(${r}, ${g}, ${b})`);
+            } else {
+              app.wrongAnswer();
+              // change all colour buttons to correct colour
+              app.buttons.css(
+                `background-color`,
+                `${app.buttons[answerButton].style.backgroundColor}`
+              );
+            }
+          });
+      })
+      .catch(handleError);
+  }
 };
 
 //  ****** SETS UP GAME IN RGB MODE *******
@@ -235,81 +310,6 @@ app.hexMode = function () {
           );
         }
       });
-  }
-};
-
-// ********** SETS UP GAME IN NAMED MODE *********
-app.namedMode = function () {
-  // generates a random hex value to use with the endpoint url to get button colours from api
-  const makeHexValue = () => {
-    let hexCode = "";
-    const hexValues = "0123456789abcdef";
-
-    while (hexCode.length < 6) {
-      hexCode += hexValues[Math.floor(Math.random() * hexValues.length)];
-    }
-    return hexCode;
-  };
-
-  // sets button colours using rgb values taken from the api call results
-  const setButtonColour = function (button, red, green, blue) {
-    $(button).css("background-color", `rgb(${red}, ${green}, ${blue})`);
-  };
-
-  // adds name of colour to the label beneath each button
-  const setButtonName = function (el, name) {
-    el.append(name);
-  };
-
-  // generates a random numer between 0 and 3 or number of buttons - 1. ** Must be inside this function to keep the correct answer random
-  const answerButton = Math.floor(Math.random() * (app.buttons.length - 1));
-
-  // api url
-  const endpoint = "https://api.color.pizza/v1/";
-
-  // what to do in case of error from api call
-  function handleError(err) {
-    setButtonName(app.label, `<label>(${err.statusText}</label>)`);
-  }
-
-  for (let i = 0; i < app.buttons.length; i++) {
-    // Loops through each button to set a button colour and name taken from the api
-    $.ajax({
-      url: `${endpoint}${makeHexValue()}?noduplicates=true`,
-      dataType: "json",
-      method: "GET",
-    })
-      .then(function (res) {
-        const html = `${res.colors[0].name}`;
-        setButtonName(app.label[i], html);
-        const r = res.colors[0].rgb.r;
-        const g = res.colors[0].rgb.g;
-        const b = res.colors[0].rgb.b;
-        setButtonColour(app.buttons[i], r, g, b);
-
-        // if value of answerButton equals index of app.buttons appends the corresponding colour code to the h2 with the class of colorValue
-        if (i === answerButton) {
-          app.colourValue.html(`Guess which colour matches this colour code:
-  <span class="bold">rgb(${r}, ${g}, ${b})</span>`);
-        }
-
-        // event handler to take in user guess and respond according to whether they are right or wrong
-        $(app.buttons[i])
-          .off() // .off keeps click from firing multiple times, .one makes correct answer only clickable once to accumulate a point.
-          .one("click", function () {
-            if (this === app.buttons[answerButton]) {
-              app.correctAnswer(`rgb(${r}, ${g}, ${b})`);
-            } else {
-              app.wrongAnswer();
-              // change all colour buttons to correct colour
-              app.buttons.css(
-                `background-color`,
-                `${app.buttons[answerButton].style.backgroundColor}`
-              );
-            }
-          });
-      })
-      .catch(handleError);
   }
 };
 

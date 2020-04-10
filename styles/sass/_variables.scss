@@ -3,3 +3,13 @@
 $primary: #4aafbc;
 $secondary: #1d366d;
 $white: #fffafa;
+
+// mixins
+
+//Google Material Design Box Shadows
+@mixin lightShadow() {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+@mixin heavyShadow() {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}

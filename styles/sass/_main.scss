@@ -1,3 +1,4 @@
+// centers elements on the page
 body,
 .wrapper,
 .startPage,
@@ -13,6 +14,7 @@ body,
   width: 80%;
 }
 
+// places start page buttons in a 4 x 2 grid
 .startButtons {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr 1fr;
@@ -20,6 +22,7 @@ body,
   align-items: center;
 }
 
+// round info buttons on start page
 .info {
   text-transform: lowercase;
   color: $white;
@@ -31,8 +34,16 @@ body,
   background-color: $secondary;
   outline: none;
   border: none;
+  // changes button appearance when user tabs through page
+  &:focus {
+    border: 2px solid $secondary;
+    background-color: $white;
+    color: $secondary;
+    outline: none;
+  }
 }
 
+// sets styles for all rectangle buttons
 .levelButton,
 .resetButton,
 .nextQuestion,
@@ -47,6 +58,7 @@ body,
   border-radius: 10px;
   transition: all 0.4s;
 
+  // changes button appearance when user tabs through page
   &:focus {
     border: 2px solid $secondary;
     background-color: $white;
@@ -55,12 +67,14 @@ body,
   }
 }
 
+// makes colour code, answer result and final score bold
 .bold {
   font-weight: 700;
   font-size: 2.7rem;
   display: block;
 }
 
+// wrapper for colour buttons
 .buttonWrapper {
   width: 80vw;
   max-width: 1240px;
@@ -75,6 +89,7 @@ body,
   align-items: center;
 }
 
+// places colour name labels below colour buttons
 .gridItem2,
 .gridItem4,
 .gridItem6,
@@ -82,6 +97,7 @@ body,
   grid-row-start: 2;
 }
 
+// Four round buttons where users choose which colour matches the colour code
 .colourButton {
   width: 200px;
   height: 200px;
@@ -90,8 +106,7 @@ body,
   box-shadow: none;
   margin: 15px;
   outline: none;
-  //Google Material Design Box Shadow
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  @include lightShadow();
 }
 
 #colourValue,
@@ -99,12 +114,7 @@ body,
   margin: 0 auto;
 }
 
-.result {
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin: 30px;
-}
-
+// next colour button and start again button
 .reset {
   margin: 0 auto;
   display: flex;
@@ -114,10 +124,7 @@ body,
   flex-wrap: wrap;
 }
 
+// creates space below Play Again button on final score page
 .restart {
   margin-bottom: 40px;
-}
-
-.twitter-share-button {
-  margin: 30px 0;
 }

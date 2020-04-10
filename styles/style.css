@@ -348,6 +348,13 @@ body,
   border: none;
 }
 
+.info:focus {
+  border: 2px solid #1d366d;
+  background-color: #fffafa;
+  color: #1d366d;
+  outline: none;
+}
+
 .levelButton,
 .resetButton,
 .nextQuestion,
@@ -430,12 +437,6 @@ body,
   margin: 0 auto;
 }
 
-.result {
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin: 30px;
-}
-
 .reset {
   margin: 0 auto;
   display: -webkit-box;
@@ -459,44 +460,33 @@ body,
   margin-bottom: 40px;
 }
 
-.twitter-share-button {
-  margin: 30px 0;
-}
-
 .namedInfoModal,
 .rgbInfoModal,
 .hslInfoModal,
 .hexInfoModal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: black;
-  /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
 .namedModal,
 .rgbModal,
 .hslModal,
 .hexModal {
-  background-color: #fefefe;
+  background-color: #fffafa;
   margin: 15% auto;
-  /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #adadad;
   width: 75%;
   border-radius: 10px;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .modalText {
@@ -505,23 +495,21 @@ body,
   margin-bottom: 40px;
 }
 
-/* The Close Button */
 .close {
   background-color: #1d366d;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: white;
+  color: #fffafa;
   float: right;
   font-size: 2.8rem;
   text-align: center;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #1d366d;
-  background-color: aliceblue;
+  background-color: #fffafa;
   text-decoration: none;
   cursor: pointer;
 }
@@ -540,8 +528,7 @@ body,
     line-height: 3.5rem;
   }
   h2,
-  button,
-  .result {
+  button {
     font-size: 3rem;
   }
   .levelButton,
