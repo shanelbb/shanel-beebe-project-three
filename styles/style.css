@@ -346,6 +346,8 @@ body,
   background-color: #1d366d;
   outline: none;
   border: none;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 .info:focus {

@@ -34,12 +34,10 @@ body,
   background-color: $secondary;
   outline: none;
   border: none;
+  transition: all 0.4s;
   // changes button appearance when user tabs through page
   &:focus {
-    border: 2px solid $secondary;
-    background-color: $white;
-    color: $secondary;
-    outline: none;
+    @include focus();
   }
 }
 
@@ -60,10 +58,7 @@ body,
 
   // changes button appearance when user tabs through page
   &:focus {
-    border: 2px solid $secondary;
-    background-color: $white;
-    color: $secondary;
-    outline: none;
+    @include focus();
   }
 }
 
